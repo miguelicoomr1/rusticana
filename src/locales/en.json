@@ -1,5 +1,7 @@
 {
-  "meta": { "siteName": "Restaurant La Rusticana" },
+  "meta": {
+    "siteName": "Restaurant La Rusticana"
+  },
   "nav": {
     "home": "Home",
     "main": "Main navigation",
@@ -36,8 +38,12 @@
     "close": "Close",
     "newWindow": "opens in a new window"
   },
-  "langSuggest": { "message": "This page is also available in English" },
-  "mobileBar": { "label": "Quick actions" },
+  "langSuggest": {
+    "message": "This page is also available in English"
+  },
+  "mobileBar": {
+    "label": "Quick actions"
+  },
   "whatsapp": {
     "defaultMessage": "Hello, I would like to book a table at La Rusticana.",
     "formIntro": "Hello, I would like to book a table at La Rusticana:"
@@ -90,7 +96,8 @@
     "since": "Family restaurant in Atamaría, next to La Manga Club. Open since {year}.",
     "visit": "Visit us",
     "explore": "Explore",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "credit": "Designed and developed by"
   },
   "hours": {
     "title": "Opening hours",
@@ -135,12 +142,36 @@
     "title": "A place to enjoy all year round",
     "lead": "The dining room changes with the weather: outdoors when possible, by the fire when needed.",
     "items": [
-      { "title": "Terraces", "text": "Spacious open-air terraces for fine afternoons and evenings.", "icon": "sun" },
-      { "title": "Fireside rooms", "text": "When it gets cooler, warm and welcoming indoor dining rooms.", "icon": "flame" },
-      { "title": "For children", "text": "Outdoor play area and an indoor play zone for rainy days. Children's menu and high chairs.", "icon": "trees" },
-      { "title": "Private parking", "text": "Free parking at the restaurant itself.", "icon": "car" },
-      { "title": "Music and special nights", "text": "Throughout the year they host live music, themed parties and special nights. Follow us on social media for the dates.", "icon": "music" },
-      { "title": "Celebrations and groups", "text": "Birthdays, anniversaries, communions, weddings, company dinners and family gatherings, with group menus and tailor-made proposals.", "icon": "utensils" }
+      {
+        "title": "Terraces",
+        "text": "Spacious open-air terraces for fine afternoons and evenings.",
+        "icon": "sun"
+      },
+      {
+        "title": "Fireside rooms",
+        "text": "When it gets cooler, warm and welcoming indoor dining rooms.",
+        "icon": "flame"
+      },
+      {
+        "title": "For children",
+        "text": "Outdoor play area and an indoor play zone for rainy days. Children's menu and high chairs.",
+        "icon": "trees"
+      },
+      {
+        "title": "Private parking",
+        "text": "Free parking at the restaurant itself.",
+        "icon": "car"
+      },
+      {
+        "title": "Music and special nights",
+        "text": "Throughout the year they host live music, themed parties and special nights. Follow us on social media for the dates.",
+        "icon": "music"
+      },
+      {
+        "title": "Celebrations and groups",
+        "text": "Birthdays, anniversaries, communions, weddings, company dinners and family gatherings, with group menus and tailor-made proposals.",
+        "icon": "utensils"
+      }
     ],
     "access": "Wheelchair-accessible entrance, parking and toilet."
   },
@@ -183,7 +214,11 @@
     "perUnit": "each",
     "askStaff": "Ask",
     "pending": "Price to be confirmed with the restaurant",
-    "tags": { "vegetarian": "Vegetarian", "vegan": "Vegan", "glutenFree": "Gluten-free" },
+    "tags": {
+      "vegetarian": "Vegetarian",
+      "vegan": "Vegan",
+      "glutenFree": "Gluten-free"
+    },
     "noResults": "There are no dishes in this category.",
     "downloadNote": "Prefer a paper copy? Ask for one at the restaurant."
   },
@@ -208,9 +243,18 @@
     },
     "timelineTitle": "In a few dates",
     "timeline": [
-      { "year": "1986", "text": "Jens and Reinhilde Dittler open La Rusticana in Atamaría." },
-      { "year": "2023", "text": "The ORM programme El Rompeolas devotes an episode to La Rusticana as part of its “Rutas gastronómicas por la Trimilenaria” (gastronomic routes through the Trimilenaria)." },
-      { "year": "2026", "text": "Forty years on, the house is still open and in the hands of the family." }
+      {
+        "year": "1986",
+        "text": "Jens and Reinhilde Dittler open La Rusticana in Atamaría."
+      },
+      {
+        "year": "2023",
+        "text": "The ORM programme El Rompeolas devotes an episode to La Rusticana as part of its “Rutas gastronómicas por la Trimilenaria” (gastronomic routes through the Trimilenaria)."
+      },
+      {
+        "year": "2026",
+        "text": "Forty years on, the house is still open and in the hands of the family."
+      }
     ],
     "press": "Watch the episode on ORM",
     "cta": "Come and meet us"
@@ -231,7 +275,13 @@
     },
     "pendingTitle": "Photo pending",
     "pendingHint": "It will be replaced with a real photograph of the restaurant.",
-    "lightbox": { "close": "Close image", "prev": "Previous image", "next": "Next image", "label": "Image viewer", "counter": "Image {n} of {total}" },
+    "lightbox": {
+      "close": "Close image",
+      "prev": "Previous image",
+      "next": "Next image",
+      "label": "Image viewer",
+      "counter": "Image {n} of {total}"
+    },
     "note": "Photographs of the restaurant. Slots marked as pending are waiting for real photographs to be supplied by the restaurant."
   },
   "reservationsPage": {
@@ -255,9 +305,16 @@
       "allergies": "Allergies or intolerances",
       "consent": "I have read the privacy policy and agree to my data being processed to manage this booking."
     },
-    "areas": { "none": "No preference", "terrace": "Terrace", "indoor": "Indoors" },
+    "areas": {
+      "none": "No preference",
+      "terrace": "Terrace",
+      "indoor": "Indoors"
+    },
     "guestsMore": "More than {n} guests: please call us",
-    "placeholders": { "notes": "Birthday, high chair, pram…", "allergies": "Tell us about any allergies or intolerances" },
+    "placeholders": {
+      "notes": "Birthday, high chair, pram…",
+      "allergies": "Tell us about any allergies or intolerances"
+    },
     "submitWhatsapp": "Send request via WhatsApp",
     "submitEmail": "Send by email",
     "submit": "Send request",
@@ -301,39 +358,111 @@
     "updated": "Last updated: September 2026.",
     "holderTitle": "1. Identifying details",
     "holder": "In compliance with Article 10 of Law 34/2002 on information society services and electronic commerce (LSSI-CE), you are informed that this website is operated by:",
-    "labels": { "trade": "Trade name", "holder": "Owner", "vat": "NIF/CIF (tax ID)", "address": "Registered address", "email": "Email", "phone": "Phone", "pendingValue": "To be confirmed by the owner" },
+    "labels": {
+      "trade": "Trade name",
+      "holder": "Owner",
+      "vat": "NIF/CIF (tax ID)",
+      "address": "Registered address",
+      "email": "Email",
+      "phone": "Phone",
+      "pendingValue": "To be confirmed by the owner"
+    },
     "sections": [
-      { "title": "2. Purpose and conditions of use", "text": "This website provides information about the restaurant (menu, opening hours, location and bookings). Its use is free of charge and confers the status of user, who undertakes to use it in accordance with the law, good faith and public order." },
-      { "title": "3. Intellectual and industrial property", "text": "The texts, design, code and photographs on the site belong to the owner or are used with permission. Their reproduction or distribution without permission is prohibited. The name “La Rusticana” and other distinctive signs belong to their respective owners." },
-      { "title": "4. Indicative information", "text": "The menu, prices, opening hours and events are published in good faith and may change without notice. Before visiting, especially with a group or if you have allergies, please confirm the details by phone or WhatsApp." },
-      { "title": "5. Links to third parties", "text": "The site links to third-party services (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). The owner is not responsible for their content or their privacy policies." },
-      { "title": "6. Governing law and jurisdiction", "text": "This notice is governed by Spanish law. For any dispute with consumers, the courts and tribunals of the consumer's place of residence shall have jurisdiction, in accordance with the applicable regulations." }
+      {
+        "title": "2. Purpose and conditions of use",
+        "text": "This website provides information about the restaurant (menu, opening hours, location and bookings). Its use is free of charge and confers the status of user, who undertakes to use it in accordance with the law, good faith and public order."
+      },
+      {
+        "title": "3. Intellectual and industrial property",
+        "text": "The texts, design, code and photographs on the site belong to the owner or are used with permission. Their reproduction or distribution without permission is prohibited. The name “La Rusticana” and other distinctive signs belong to their respective owners."
+      },
+      {
+        "title": "4. Indicative information",
+        "text": "The menu, prices, opening hours and events are published in good faith and may change without notice. Before visiting, especially with a group or if you have allergies, please confirm the details by phone or WhatsApp."
+      },
+      {
+        "title": "5. Links to third parties",
+        "text": "The site links to third-party services (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). The owner is not responsible for their content or their privacy policies."
+      },
+      {
+        "title": "6. Governing law and jurisdiction",
+        "text": "This notice is governed by Spanish law. For any dispute with consumers, the courts and tribunals of the consumer's place of residence shall have jurisdiction, in accordance with the applicable regulations."
+      }
     ]
   },
   "privacyPolicy": {
     "updated": "Last updated: September 2026.",
     "intro": "This policy explains how the personal data you provide when booking or contacting us is processed, in accordance with Regulation (EU) 2016/679 (RGPD/GDPR) and Organic Law 3/2018 (LOPDGDD).",
     "sections": [
-      { "title": "1. Data controller", "text": "Restaurante La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcia). Email: larusticanarestaurant@outlook.es · Phone: +34 626 91 90 20. Company name and NIF/CIF (tax ID): to be confirmed by the owner." },
-      { "title": "2. What data we process and why", "text": "Name, phone, email (optional), date, time, number of guests, preferred area, comments and any allergies you state, solely to manage your booking request and reply to you. If you contact us by phone, WhatsApp or email, we process the data you provide in order to deal with your enquiry." },
-      { "title": "3. Legal basis", "text": "Your consent (Art. 6.1.a GDPR) when you submit the form, and the taking of pre-contractual steps at your request (Art. 6.1.b). If you mention allergies or intolerances, this data may relate to your health; we process it only to adapt our service, with your explicit consent when you submit it." },
-      { "title": "4. How your data travels", "text": "This site does not store requests on a server of its own. When you submit the form, WhatsApp or your email app opens with the message ready to send or, if the restaurant activates a booking system, the request is sent to that system. WhatsApp involves Meta Platforms Ireland Ltd. and, for email, the restaurant's provider (Microsoft Outlook)." },
-      { "title": "5. Retention", "text": "We keep the data for as long as necessary to manage the booking and, afterwards, for the legal limitation periods for possible liabilities. No profiling or automated decision-making takes place." },
-      { "title": "6. Recipients", "text": "We do not disclose your data to third parties except where legally required. The providers mentioned act as processors or as independent controllers of their own services, according to their terms. If you load the Google map, Google receives technical data from your browser." },
-      { "title": "7. Your rights", "text": "You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to larusticanarestaurant@outlook.es, with a copy of your ID if necessary. If you believe they have not been respected, you may lodge a complaint with the Spanish Data Protection Agency (AEPD, www.aepd.es)." },
-      { "title": "8. Minors", "text": "Bookings must be made by people aged 14 or over; for anyone younger, consent must be given by their parents or guardians." }
+      {
+        "title": "1. Data controller",
+        "text": "Restaurante La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcia). Email: larusticanarestaurant@outlook.es · Phone: +34 626 91 90 20. Company name and NIF/CIF (tax ID): to be confirmed by the owner."
+      },
+      {
+        "title": "2. What data we process and why",
+        "text": "Name, phone, email (optional), date, time, number of guests, preferred area, comments and any allergies you state, solely to manage your booking request and reply to you. If you contact us by phone, WhatsApp or email, we process the data you provide in order to deal with your enquiry."
+      },
+      {
+        "title": "3. Legal basis",
+        "text": "Your consent (Art. 6.1.a GDPR) when you submit the form, and the taking of pre-contractual steps at your request (Art. 6.1.b). If you mention allergies or intolerances, this data may relate to your health; we process it only to adapt our service, with your explicit consent when you submit it."
+      },
+      {
+        "title": "4. How your data travels",
+        "text": "This site does not store requests on a server of its own. When you submit the form, WhatsApp or your email app opens with the message ready to send or, if the restaurant activates a booking system, the request is sent to that system. WhatsApp involves Meta Platforms Ireland Ltd. and, for email, the restaurant's provider (Microsoft Outlook)."
+      },
+      {
+        "title": "5. Retention",
+        "text": "We keep the data for as long as necessary to manage the booking and, afterwards, for the legal limitation periods for possible liabilities. No profiling or automated decision-making takes place."
+      },
+      {
+        "title": "6. Recipients",
+        "text": "We do not disclose your data to third parties except where legally required. The providers mentioned act as processors or as independent controllers of their own services, according to their terms. If you load the Google map, Google receives technical data from your browser."
+      },
+      {
+        "title": "7. Your rights",
+        "text": "You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to larusticanarestaurant@outlook.es, with a copy of your ID if necessary. If you believe they have not been respected, you may lodge a complaint with the Spanish Data Protection Agency (AEPD, www.aepd.es)."
+      },
+      {
+        "title": "8. Minors",
+        "text": "Bookings must be made by people aged 14 or over; for anyone younger, consent must be given by their parents or guardians."
+      }
     ]
   },
   "cookiePolicy": {
     "updated": "Last updated: September 2026.",
     "intro": "This site uses browser storage (localStorage) and, only with your permission, third-party cookies. We do not load anything optional before you accept it.",
     "tableTitle": "What we use",
-    "headers": { "name": "Name / service", "purpose": "Purpose", "type": "Type", "duration": "Duration" },
+    "headers": {
+      "name": "Name / service",
+      "purpose": "Purpose",
+      "type": "Type",
+      "duration": "Duration"
+    },
     "rows": [
-      { "name": "rusticana-lang", "purpose": "To remember the language you have chosen.", "type": "Technical (first-party)", "duration": "Until you delete it" },
-      { "name": "rusticana-consent", "purpose": "To remember your cookie choice.", "type": "Technical (first-party)", "duration": "Until you delete it" },
-      { "name": "Google Maps (embedded map)", "purpose": "To show the interactive map. Only if you accept or press “Load interactive map”.", "type": "Third-party (Google)", "duration": "As set by Google" },
-      { "name": "Google Analytics 4", "purpose": "Anonymous usage statistics. Only if the site has it enabled and you accept it.", "type": "Analytics (Google)", "duration": "Up to 2 years" }
+      {
+        "name": "rusticana-lang",
+        "purpose": "To remember the language you have chosen.",
+        "type": "Technical (first-party)",
+        "duration": "Until you delete it"
+      },
+      {
+        "name": "rusticana-consent",
+        "purpose": "To remember your cookie choice.",
+        "type": "Technical (first-party)",
+        "duration": "Until you delete it"
+      },
+      {
+        "name": "Google Maps (embedded map)",
+        "purpose": "To show the interactive map. Only if you accept or press “Load interactive map”.",
+        "type": "Third-party (Google)",
+        "duration": "As set by Google"
+      },
+      {
+        "name": "Google Analytics 4",
+        "purpose": "Anonymous usage statistics. Only if the site has it enabled and you accept it.",
+        "type": "Analytics (Google)",
+        "duration": "Up to 2 years"
+      }
     ],
     "manageTitle": "How to change your choice",
     "manageText": "Press “Cookie preferences” in the footer to change your options at any time. You can also delete the site's data from your browser.",

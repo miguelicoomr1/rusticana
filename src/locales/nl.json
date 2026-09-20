@@ -1,5 +1,7 @@
 {
-  "meta": { "siteName": "Restaurant La Rusticana" },
+  "meta": {
+    "siteName": "Restaurant La Rusticana"
+  },
   "nav": {
     "home": "Home",
     "main": "Hoofdnavigatie",
@@ -36,8 +38,12 @@
     "close": "Sluiten",
     "newWindow": "opent in een nieuw venster"
   },
-  "langSuggest": { "message": "Deze pagina is ook beschikbaar in het Nederlands" },
-  "mobileBar": { "label": "Snelle acties" },
+  "langSuggest": {
+    "message": "Deze pagina is ook beschikbaar in het Nederlands"
+  },
+  "mobileBar": {
+    "label": "Snelle acties"
+  },
   "whatsapp": {
     "defaultMessage": "Hallo, ik wil graag een tafel reserveren bij La Rusticana.",
     "formIntro": "Hallo, ik wil graag een tafel reserveren bij La Rusticana:"
@@ -90,7 +96,8 @@
     "since": "Familierestaurant in Atamaría, naast La Manga Club. Geopend sinds {year}.",
     "visit": "Bezoek ons",
     "explore": "Ontdekken",
-    "rights": "Alle rechten voorbehouden."
+    "rights": "Alle rechten voorbehouden.",
+    "credit": "Ontworpen en ontwikkeld door"
   },
   "hours": {
     "title": "Openingstijden",
@@ -135,12 +142,36 @@
     "title": "Een plek om het hele jaar van te genieten",
     "lead": "De eetzaal verandert met het weer: buiten als het kan, bij de open haard als het nodig is.",
     "items": [
-      { "title": "Terrassen", "text": "Ruime terrassen in de buitenlucht voor middagen en avonden met mooi weer.", "icon": "sun" },
-      { "title": "Zalen met open haard", "text": "Als het koeler wordt: warme en gezellige eetzalen binnen.", "icon": "flame" },
-      { "title": "Voor de kinderen", "text": "Buitenspeeltuin en binnenspeelhoek voor regenachtige dagen. Kindermenu en kinderstoelen.", "icon": "trees" },
-      { "title": "Eigen parkeerplaats", "text": "Gratis parkeren bij het restaurant zelf.", "icon": "car" },
-      { "title": "Muziek en bijzondere avonden", "text": "Gedurende het jaar organiseren zij live muziek, themafeesten en bijzondere avonden. Volg ons op social media voor de data.", "icon": "music" },
-      { "title": "Feesten en groepen", "text": "Verjaardagen, jubilea, communies, bruiloften, bedrijfsdiners en familiebijeenkomsten, met groepsmenu's en voorstellen op maat.", "icon": "utensils" }
+      {
+        "title": "Terrassen",
+        "text": "Ruime terrassen in de buitenlucht voor middagen en avonden met mooi weer.",
+        "icon": "sun"
+      },
+      {
+        "title": "Zalen met open haard",
+        "text": "Als het koeler wordt: warme en gezellige eetzalen binnen.",
+        "icon": "flame"
+      },
+      {
+        "title": "Voor de kinderen",
+        "text": "Buitenspeeltuin en binnenspeelhoek voor regenachtige dagen. Kindermenu en kinderstoelen.",
+        "icon": "trees"
+      },
+      {
+        "title": "Eigen parkeerplaats",
+        "text": "Gratis parkeren bij het restaurant zelf.",
+        "icon": "car"
+      },
+      {
+        "title": "Muziek en bijzondere avonden",
+        "text": "Gedurende het jaar organiseren zij live muziek, themafeesten en bijzondere avonden. Volg ons op social media voor de data.",
+        "icon": "music"
+      },
+      {
+        "title": "Feesten en groepen",
+        "text": "Verjaardagen, jubilea, communies, bruiloften, bedrijfsdiners en familiebijeenkomsten, met groepsmenu's en voorstellen op maat.",
+        "icon": "utensils"
+      }
     ],
     "access": "Toegang, parkeerplaats en toilet aangepast voor rolstoelen."
   },
@@ -183,7 +214,11 @@
     "perUnit": "per stuk",
     "askStaff": "Vraag ernaar",
     "pending": "Prijs nog te bevestigen door het restaurant",
-    "tags": { "vegetarian": "Vegetarisch", "vegan": "Veganistisch", "glutenFree": "Glutenvrij" },
+    "tags": {
+      "vegetarian": "Vegetarisch",
+      "vegan": "Veganistisch",
+      "glutenFree": "Glutenvrij"
+    },
     "noResults": "Er zijn geen gerechten in deze categorie.",
     "downloadNote": "Liever op papier? Vraag ernaar in het restaurant."
   },
@@ -208,9 +243,18 @@
     },
     "timelineTitle": "In een paar data",
     "timeline": [
-      { "year": "1986", "text": "Jens en Reinhilde Dittler openen La Rusticana in Atamaría." },
-      { "year": "2023", "text": "Het programma El Rompeolas van ORM wijdt een aflevering aan La Rusticana binnen de “Rutas gastronómicas por la Trimilenaria”." },
-      { "year": "2026", "text": "Veertig jaar later is het huis nog steeds open en in handen van de familie." }
+      {
+        "year": "1986",
+        "text": "Jens en Reinhilde Dittler openen La Rusticana in Atamaría."
+      },
+      {
+        "year": "2023",
+        "text": "Het programma El Rompeolas van ORM wijdt een aflevering aan La Rusticana binnen de “Rutas gastronómicas por la Trimilenaria”."
+      },
+      {
+        "year": "2026",
+        "text": "Veertig jaar later is het huis nog steeds open en in handen van de familie."
+      }
     ],
     "press": "Bekijk de aflevering op ORM",
     "cta": "Kom kennismaken"
@@ -231,7 +275,13 @@
     },
     "pendingTitle": "Foto volgt nog",
     "pendingHint": "Wordt vervangen door een echte foto van het restaurant.",
-    "lightbox": { "close": "Afbeelding sluiten", "prev": "Vorige afbeelding", "next": "Volgende afbeelding", "label": "Afbeeldingsviewer", "counter": "Afbeelding {n} van {total}" },
+    "lightbox": {
+      "close": "Afbeelding sluiten",
+      "prev": "Vorige afbeelding",
+      "next": "Volgende afbeelding",
+      "label": "Afbeeldingsviewer",
+      "counter": "Afbeelding {n} van {total}"
+    },
     "note": "Foto's van het restaurant. De vakken die als in afwachting zijn gemarkeerd, wachten op echte foto's die het restaurant zal aanleveren."
   },
   "reservationsPage": {
@@ -255,9 +305,16 @@
       "allergies": "Allergieën of intoleranties",
       "consent": "Ik heb het privacybeleid gelezen en ga ermee akkoord dat mijn gegevens worden verwerkt om deze reservering te behandelen."
     },
-    "areas": { "none": "Geen voorkeur", "terrace": "Terras", "indoor": "Binnen" },
+    "areas": {
+      "none": "Geen voorkeur",
+      "terrace": "Terras",
+      "indoor": "Binnen"
+    },
     "guestsMore": "Meer dan {n} personen: bel ons",
-    "placeholders": { "notes": "Verjaardag, kinderstoel, kinderwagen…", "allergies": "Vermeld allergieën of intoleranties" },
+    "placeholders": {
+      "notes": "Verjaardag, kinderstoel, kinderwagen…",
+      "allergies": "Vermeld allergieën of intoleranties"
+    },
     "submitWhatsapp": "Aanvraag versturen via WhatsApp",
     "submitEmail": "Versturen per e-mail",
     "submit": "Aanvraag versturen",
@@ -301,39 +358,111 @@
     "updated": "Laatst bijgewerkt: september 2026.",
     "holderTitle": "1. Identificatiegegevens",
     "holder": "Ter naleving van artikel 10 van Wet 34/2002 inzake diensten van de informatiemaatschappij en elektronische handel (LSSI-CE) wordt medegedeeld dat deze website wordt geëxploiteerd door:",
-    "labels": { "trade": "Handelsnaam", "holder": "Houder", "vat": "NIF/CIF (fiscaal nummer)", "address": "Adres", "email": "E-mail", "phone": "Telefoon", "pendingValue": "Nog te bevestigen door de houder" },
+    "labels": {
+      "trade": "Handelsnaam",
+      "holder": "Houder",
+      "vat": "NIF/CIF (fiscaal nummer)",
+      "address": "Adres",
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "pendingValue": "Nog te bevestigen door de houder"
+    },
     "sections": [
-      { "title": "2. Doel en gebruiksvoorwaarden", "text": "Deze website informeert over het restaurant (menukaart, openingstijden, locatie en reserveringen). Het gebruik ervan is gratis en verleent de hoedanigheid van gebruiker, die zich ertoe verbindt de website te gebruiken conform de wet, de goede trouw en de openbare orde." },
-      { "title": "3. Intellectuele en industriële eigendom", "text": "De teksten, het ontwerp, de code en de foto's van de website behoren toe aan de houder of worden met toestemming gebruikt. Reproductie of verspreiding zonder toestemming is verboden. De naam “La Rusticana” en de overige onderscheidende tekens behoren toe aan hun houders." },
-      { "title": "4. Indicatieve informatie", "text": "Menukaart, prijzen, openingstijden en evenementen worden te goeder trouw gepubliceerd en kunnen zonder voorafgaande kennisgeving wijzigen. Bevestig de gegevens telefonisch of via WhatsApp voordat u komt, vooral met een groep of bij allergieën." },
-      { "title": "5. Links naar derden", "text": "De website verwijst naar diensten van derden (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). De houder is niet verantwoordelijk voor hun inhoud of hun privacybeleid." },
-      { "title": "6. Toepasselijk recht en bevoegde rechter", "text": "Deze juridische informatie wordt beheerst door het Spaanse recht. Voor geschillen met consumenten zijn de rechtbanken van hun woonplaats bevoegd, overeenkomstig de toepasselijke regelgeving." }
+      {
+        "title": "2. Doel en gebruiksvoorwaarden",
+        "text": "Deze website informeert over het restaurant (menukaart, openingstijden, locatie en reserveringen). Het gebruik ervan is gratis en verleent de hoedanigheid van gebruiker, die zich ertoe verbindt de website te gebruiken conform de wet, de goede trouw en de openbare orde."
+      },
+      {
+        "title": "3. Intellectuele en industriële eigendom",
+        "text": "De teksten, het ontwerp, de code en de foto's van de website behoren toe aan de houder of worden met toestemming gebruikt. Reproductie of verspreiding zonder toestemming is verboden. De naam “La Rusticana” en de overige onderscheidende tekens behoren toe aan hun houders."
+      },
+      {
+        "title": "4. Indicatieve informatie",
+        "text": "Menukaart, prijzen, openingstijden en evenementen worden te goeder trouw gepubliceerd en kunnen zonder voorafgaande kennisgeving wijzigen. Bevestig de gegevens telefonisch of via WhatsApp voordat u komt, vooral met een groep of bij allergieën."
+      },
+      {
+        "title": "5. Links naar derden",
+        "text": "De website verwijst naar diensten van derden (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). De houder is niet verantwoordelijk voor hun inhoud of hun privacybeleid."
+      },
+      {
+        "title": "6. Toepasselijk recht en bevoegde rechter",
+        "text": "Deze juridische informatie wordt beheerst door het Spaanse recht. Voor geschillen met consumenten zijn de rechtbanken van hun woonplaats bevoegd, overeenkomstig de toepasselijke regelgeving."
+      }
     ]
   },
   "privacyPolicy": {
     "updated": "Laatst bijgewerkt: september 2026.",
     "intro": "Dit beleid legt uit hoe de persoonsgegevens worden verwerkt die u ons verstrekt bij het reserveren of contact opnemen, overeenkomstig Verordening (EU) 2016/679 (AVG, in het Spaans RGPD) en Organieke Wet 3/2018 (LOPDGDD).",
     "sections": [
-      { "title": "1. Verwerkingsverantwoordelijke", "text": "Restaurant La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcia). E-mail: larusticanarestaurant@outlook.es · Telefoon: +34 626 91 90 20. Bedrijfsnaam en NIF/CIF: nog te bevestigen door de houder." },
-      { "title": "2. Welke gegevens wij verwerken en waarvoor", "text": "Naam, telefoon, e-mail (optioneel), datum, tijd, aantal gasten, gewenste zone, opmerkingen en allergieën die u opgeeft, uitsluitend om uw reserveringsaanvraag te behandelen en u te antwoorden. Als u ons telefonisch, via WhatsApp of per e-mail contacteert, verwerken wij de gegevens die u ons verstrekt om uw vraag te beantwoorden." },
-      { "title": "3. Rechtsgrond", "text": "Uw toestemming (art. 6.1.a AVG) bij het verzenden van het formulier en de uitvoering van precontractuele maatregelen op uw verzoek (art. 6.1.b). Als u allergieën of intoleranties vermeldt, kunnen deze gegevens gezondheidsgegevens zijn; wij verwerken ze uitsluitend om de service aan te passen, met uw uitdrukkelijke toestemming bij het verzenden ervan." },
-      { "title": "4. Hoe uw gegevens reizen", "text": "Deze website slaat de aanvragen niet op een eigen server op. Bij het verzenden van het formulier wordt WhatsApp of uw e-mailprogramma geopend met het klaargezette bericht, of wordt de aanvraag —als het restaurant een reserveringssysteem activeert— naar dat systeem verzonden. Bij WhatsApp is Meta Platforms Ireland Ltd. betrokken en bij e-mail de aanbieder van het restaurant (Microsoft Outlook)." },
-      { "title": "5. Bewaartermijn", "text": "Wij bewaren de gegevens zolang nodig is om de reservering te behandelen en daarna gedurende de wettelijke termijnen voor mogelijke aansprakelijkheden. Er worden geen profielen opgesteld en er worden geen geautomatiseerde beslissingen genomen." },
-      { "title": "6. Ontvangers", "text": "Wij verstrekken uw gegevens niet aan derden, behalve bij wettelijke verplichting. De genoemde aanbieders treden op als verwerkers of als eigen verantwoordelijken voor hun diensten, volgens hun voorwaarden. Als u de Google-kaart laadt, ontvangt Google technische gegevens van uw browser." },
-      { "title": "7. Uw rechten", "text": "U kunt de rechten van inzage, rectificatie, wissing, bezwaar, beperking en overdraagbaarheid uitoefenen door te schrijven naar larusticanarestaurant@outlook.es, zo nodig met een kopie van uw identiteitsbewijs. Als u van mening bent dat deze rechten niet zijn gerespecteerd, kunt u een klacht indienen bij de Spaanse gegevensbeschermingsautoriteit, Agencia Española de Protección de Datos (AEPD, www.aepd.es)." },
-      { "title": "8. Minderjarigen", "text": "Reserveringen moeten worden gemaakt door personen van 14 jaar of ouder; voor jongere personen komt de toestemming toe aan hun ouders of voogden." }
+      {
+        "title": "1. Verwerkingsverantwoordelijke",
+        "text": "Restaurant La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcia). E-mail: larusticanarestaurant@outlook.es · Telefoon: +34 626 91 90 20. Bedrijfsnaam en NIF/CIF: nog te bevestigen door de houder."
+      },
+      {
+        "title": "2. Welke gegevens wij verwerken en waarvoor",
+        "text": "Naam, telefoon, e-mail (optioneel), datum, tijd, aantal gasten, gewenste zone, opmerkingen en allergieën die u opgeeft, uitsluitend om uw reserveringsaanvraag te behandelen en u te antwoorden. Als u ons telefonisch, via WhatsApp of per e-mail contacteert, verwerken wij de gegevens die u ons verstrekt om uw vraag te beantwoorden."
+      },
+      {
+        "title": "3. Rechtsgrond",
+        "text": "Uw toestemming (art. 6.1.a AVG) bij het verzenden van het formulier en de uitvoering van precontractuele maatregelen op uw verzoek (art. 6.1.b). Als u allergieën of intoleranties vermeldt, kunnen deze gegevens gezondheidsgegevens zijn; wij verwerken ze uitsluitend om de service aan te passen, met uw uitdrukkelijke toestemming bij het verzenden ervan."
+      },
+      {
+        "title": "4. Hoe uw gegevens reizen",
+        "text": "Deze website slaat de aanvragen niet op een eigen server op. Bij het verzenden van het formulier wordt WhatsApp of uw e-mailprogramma geopend met het klaargezette bericht, of wordt de aanvraag —als het restaurant een reserveringssysteem activeert— naar dat systeem verzonden. Bij WhatsApp is Meta Platforms Ireland Ltd. betrokken en bij e-mail de aanbieder van het restaurant (Microsoft Outlook)."
+      },
+      {
+        "title": "5. Bewaartermijn",
+        "text": "Wij bewaren de gegevens zolang nodig is om de reservering te behandelen en daarna gedurende de wettelijke termijnen voor mogelijke aansprakelijkheden. Er worden geen profielen opgesteld en er worden geen geautomatiseerde beslissingen genomen."
+      },
+      {
+        "title": "6. Ontvangers",
+        "text": "Wij verstrekken uw gegevens niet aan derden, behalve bij wettelijke verplichting. De genoemde aanbieders treden op als verwerkers of als eigen verantwoordelijken voor hun diensten, volgens hun voorwaarden. Als u de Google-kaart laadt, ontvangt Google technische gegevens van uw browser."
+      },
+      {
+        "title": "7. Uw rechten",
+        "text": "U kunt de rechten van inzage, rectificatie, wissing, bezwaar, beperking en overdraagbaarheid uitoefenen door te schrijven naar larusticanarestaurant@outlook.es, zo nodig met een kopie van uw identiteitsbewijs. Als u van mening bent dat deze rechten niet zijn gerespecteerd, kunt u een klacht indienen bij de Spaanse gegevensbeschermingsautoriteit, Agencia Española de Protección de Datos (AEPD, www.aepd.es)."
+      },
+      {
+        "title": "8. Minderjarigen",
+        "text": "Reserveringen moeten worden gemaakt door personen van 14 jaar of ouder; voor jongere personen komt de toestemming toe aan hun ouders of voogden."
+      }
     ]
   },
   "cookiePolicy": {
     "updated": "Laatst bijgewerkt: september 2026.",
     "intro": "Deze website gebruikt de opslag van de browser (localStorage) en, alleen met uw toestemming, cookies van derden. Wij laden niets optioneels voordat u het accepteert.",
     "tableTitle": "Wat wij gebruiken",
-    "headers": { "name": "Naam / dienst", "purpose": "Doel", "type": "Type", "duration": "Duur" },
+    "headers": {
+      "name": "Naam / dienst",
+      "purpose": "Doel",
+      "type": "Type",
+      "duration": "Duur"
+    },
     "rows": [
-      { "name": "rusticana-lang", "purpose": "De taal onthouden die u hebt gekozen.", "type": "Technisch (eigen)", "duration": "Tot u het verwijdert" },
-      { "name": "rusticana-consent", "purpose": "Uw cookiekeuze onthouden.", "type": "Technisch (eigen)", "duration": "Tot u het verwijdert" },
-      { "name": "Google Maps (ingesloten kaart)", "purpose": "De interactieve kaart tonen. Alleen als u accepteert of op “Kaart laden” drukt.", "type": "Derden (Google)", "duration": "Volgens Google" },
-      { "name": "Google Analytics 4", "purpose": "Anonieme gebruiksstatistieken. Alleen als de website dit heeft geactiveerd en u het accepteert.", "type": "Analytisch (Google)", "duration": "Tot 2 jaar" }
+      {
+        "name": "rusticana-lang",
+        "purpose": "De taal onthouden die u hebt gekozen.",
+        "type": "Technisch (eigen)",
+        "duration": "Tot u het verwijdert"
+      },
+      {
+        "name": "rusticana-consent",
+        "purpose": "Uw cookiekeuze onthouden.",
+        "type": "Technisch (eigen)",
+        "duration": "Tot u het verwijdert"
+      },
+      {
+        "name": "Google Maps (ingesloten kaart)",
+        "purpose": "De interactieve kaart tonen. Alleen als u accepteert of op “Kaart laden” drukt.",
+        "type": "Derden (Google)",
+        "duration": "Volgens Google"
+      },
+      {
+        "name": "Google Analytics 4",
+        "purpose": "Anonieme gebruiksstatistieken. Alleen als de website dit heeft geactiveerd en u het accepteert.",
+        "type": "Analytisch (Google)",
+        "duration": "Tot 2 jaar"
+      }
     ],
     "manageTitle": "Hoe u uw keuze wijzigt",
     "manageText": "Klik onderaan de pagina op “Cookievoorkeuren” om uw opties op elk moment te wijzigen. U kunt ook de sitegegevens via uw browser verwijderen.",

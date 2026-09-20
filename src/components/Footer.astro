@@ -76,6 +76,10 @@ const socials = [
       <li><button type="button" class="linklike" data-consent-open>{t(locale, 'consent.manage')}</button></li>
     </ul>
     <p>© {year} {restaurant.displayName}. {t(locale, 'footer.rights')}</p>
+    <p class="site-footer__credit">
+      {t(locale, 'footer.credit')}
+      <a href="https://miguelicoomr1.github.io/portfolio" target="_blank" rel="noopener">MiguelicooMR1<span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span></a>
+    </p>
   </div>
 </footer>
 
@@ -174,6 +178,12 @@ const socials = [
     align-items: center;
     min-height: 2.5rem;
     text-underline-offset: 0.25em;
+  }
+  .site-footer__credit {
+    flex-basis: 100%;
+  }
+  .site-footer__credit a {
+    font-weight: 650;
   }
   .site-footer__links a {
     text-decoration: none;
