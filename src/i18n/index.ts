@@ -5,7 +5,7 @@ import fr from '../locales/fr.json';
 import nl from '../locales/nl.json';
 import { DEFAULT_LOCALE, LOCALES, LOCALE_META, type Locale } from './locales.ts';
 import { pathFor, type PageKey } from './routes.ts';
-export { PAGE_KEYS, SLUGS, resolvePath } from './routes.ts';
+export { PAGE_KEYS, SLUGS, resolvePath, withBase, BASE } from './routes.ts';
 
 export type Dict = { [key: string]: string | string[] | Dict | Dict[] };
 

@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST = path.resolve('dist');
+const BASE = (process.env.PUBLIC_BASE_PATH || '').replace(/\/$/, '');
 const LOCALES = ['es', 'en', 'de', 'fr', 'nl'];
 const errors = [];
 const warnings = [];
@@ -22,7 +23,8 @@ function walk(dir, out = []) {
 }
 const rel = (p) => path.relative(DIST, p).replaceAll('\\', '/');
 const exists = (urlPath) => {
-  const clean = decodeURIComponent(urlPath.split('#')[0].split('?')[0]);
+  let clean = decodeURIComponent(urlPath.split('#')[0].split('?')[0]);
+  if (BASE && clean.startsWith(BASE)) clean = clean.slice(BASE.length) || '/';
   const p = path.join(DIST, clean);
   if (fs.existsSync(p) && fs.statSync(p).isFile()) return true;
   return fs.existsSync(path.join(p, 'index.html'));
@@ -55,7 +57,7 @@ for (const file of pages) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (!canonical) err(name, 'sin canonical');
   else {
-    const expected = `${site}/${name.replace(/index\.html$/, '')}`;
+    const expected = `${site}${BASE}/${name.replace(/index\.html$/, '')}`;
     if (canonical !== expected) err(name, `canonical ${canonical} != ${expected}`);
   }
 

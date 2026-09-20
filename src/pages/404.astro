@@ -2,7 +2,7 @@
 /** 404 multilingüe: muestra el idioma de la ruta solicitada / preferencia guardada / navegador. */
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
-import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor, t } from '../i18n/index.ts';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor, withBase, BASE, t } from '../i18n/index.ts';
 ---
 
 <!doctype html>
@@ -12,13 +12,14 @@ import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor, t } from '../i18n/index.
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{t(DEFAULT_LOCALE, 'seo.notFound.title')}</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE }}>
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE, base: BASE }}>
       document.documentElement.classList.add('js');
       (function () {
         let pick = fallback;
         try {
-          const seg = location.pathname.split('/').filter(Boolean)[0];
+          const rel = base && location.pathname.indexOf(base) === 0 ? location.pathname.slice(base.length) : location.pathname;
+          const seg = rel.split('/').filter(Boolean)[0];
           const saved = localStorage.getItem('rusticana-lang');
           if (seg && locales.indexOf(seg) > -1) pick = seg;
           else if (saved && locales.indexOf(saved) > -1) pick = saved;

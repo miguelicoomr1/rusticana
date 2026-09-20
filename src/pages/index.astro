@@ -1,7 +1,7 @@
 ---
 /** Raíz: selector/redirección de idioma. x-default de hreflang apunta a la versión española. */
 import '../styles/global.css';
-import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor } from '../i18n/index.ts';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor, withBase, BASE } from '../i18n/index.ts';
 import { abs } from '../lib/seo.ts';
 const target = pathFor(DEFAULT_LOCALE, 'home');
 ---
@@ -17,9 +17,9 @@ const target = pathFor(DEFAULT_LOCALE, 'home');
     <link rel="canonical" href={abs(target)} />
     {LOCALES.map((l) => <link rel="alternate" hreflang={LOCALE_META[l].hreflang} href={abs(pathFor(l, 'home'))} />)}
     <link rel="alternate" hreflang="x-default" href={abs(target)} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <noscript><meta http-equiv="refresh" content={`0;url=${target}`} /></noscript>
-    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE }}>
+    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE, base: BASE }}>
       (function () {
         let pick = fallback;
         try {
@@ -35,7 +35,7 @@ const target = pathFor(DEFAULT_LOCALE, 'home');
         } catch {
           /* almacenamiento bloqueado */
         }
-        location.replace('/' + pick + '/');
+        location.replace(base + '/' + pick + '/');
       })();
     </script>
   </head>

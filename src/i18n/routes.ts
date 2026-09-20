@@ -26,15 +26,24 @@ export const SLUGS: Record<PageKey, Record<Locale, string>> = {
   cookies: { es: 'cookies', en: 'cookie-policy', de: 'cookie-richtlinie', fr: 'politique-cookies', nl: 'cookiebeleid' },
 };
 
-/** Ruta relativa con barra final: /es/carta/ */
+/** Subruta de despliegue sin barra final ('' en la raíz, '/rusticana' en GitHub Pages de proyecto). */
+export const BASE = ((import.meta.env?.BASE_URL as string | undefined) ?? '/').replace(/\/$/, '');
+
+/** Antepone la subruta de despliegue a una ruta absoluta del sitio. */
+export function withBase(p: string): string {
+  return `${BASE}${p.startsWith('/') ? p : `/${p}`}`;
+}
+
+/** Ruta con barra final y subruta: /es/carta/ (o /rusticana/es/carta/) */
 export function pathFor(locale: Locale, key: PageKey): string {
   const slug = SLUGS[key][locale];
-  return slug ? `/${locale}/${slug}/` : `/${locale}/`;
+  return withBase(slug ? `/${locale}/${slug}/` : `/${locale}/`);
 }
 
 /** Devuelve la clave de página y el idioma para un pathname, o null. */
 export function resolvePath(pathname: string): { locale: Locale; key: PageKey } | null {
-  const parts = pathname.split('/').filter(Boolean);
+  const rel = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname;
+  const parts = rel.split('/').filter(Boolean);
   const locale = parts[0] as Locale | undefined;
   if (!locale || !(LOCALES as readonly string[]).includes(locale)) return null;
   const slug = parts[1] ?? '';

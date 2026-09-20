@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import { restaurant } from '../config/restaurant.config.ts';
-import { LOCALES, LOCALE_META, pathFor, t, type Locale, type PageKey } from '../i18n/index.ts';
+import { LOCALES, LOCALE_META, pathFor, t, withBase, type Locale, type PageKey } from '../i18n/index.ts';
 import { abs, hreflangLinks, OG_IMAGE_PATH } from '../lib/seo.ts';
 
 interface Props {
@@ -52,7 +52,7 @@ const suggestMessages = Object.fromEntries(LOCALES.map((l) => [l, t(l, 'langSugg
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={abs(ogImage)} />
+    <meta property="og:image" content={abs(withBase(ogImage))} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={t(locale, 'seo.ogAlt')} />
@@ -61,14 +61,14 @@ const suggestMessages = Object.fromEntries(LOCALES.map((l) => [l, t(l, 'langSugg
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={abs(ogImage)} />
+    <meta name="twitter:image" content={abs(withBase(ogImage))} />
     <meta name="twitter:image:alt" content={t(locale, 'seo.ogAlt')} />
     {restaurant.analytics.gscVerification && <meta name="google-site-verification" content={restaurant.analytics.gscVerification} />}
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/manifest.webmanifest')} />
 
     <link rel="preload" href={brygada} as="font" type="font/woff2" crossorigin />
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}

@@ -1,6 +1,6 @@
 import { restaurant } from '../config/restaurant.config.ts';
 import { openingHoursSpecification } from './hours.ts';
-import { alternatesFor, pathFor, t, LOCALE_META, type Locale, type PageKey } from '../i18n/index.ts';
+import { alternatesFor, pathFor, t, withBase, LOCALE_META, type Locale, type PageKey } from '../i18n/index.ts';
 
 export const SITE = restaurant.site.url.replace(/\/$/, '');
 
@@ -21,12 +21,12 @@ export function restaurantJsonLd(locale: Locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Restaurant',
-    '@id': `${SITE}/#restaurant`,
+    '@id': `${abs(withBase('/'))}#restaurant`,
     name: r.displayName,
     alternateName: r.name,
     description: t(locale, 'seo.schemaDescription'),
     url: abs(pathFor(locale, 'home')),
-    image: [abs(OG_IMAGE_PATH)],
+    image: [abs(withBase(OG_IMAGE_PATH))],
     telephone: r.phone.e164,
     email: r.email.address,
     foundingDate: String(r.foundedYear),
