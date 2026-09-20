@@ -1,0 +1,160 @@
+---
+import { restaurant } from '../config/restaurant.config.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const ga4 = restaurant.analytics.ga4Id;
+---
+
+<div class="consent on-olive" data-consent data-ga4={ga4} hidden>
+  <div class="consent__panel" role="region" aria-labelledby="consent-title" tabindex="-1" data-consent-panel>
+    <h2 id="consent-title" class="consent__title">{t(locale, 'consent.title')}</h2>
+    <p class="consent__text">
+      {t(locale, 'consent.text')}
+      <a href={pathFor(locale, 'cookies')}>{t(locale, 'consent.policy')}</a>
+    </p>
+
+    <div class="consent__details" data-consent-details hidden>
+      <div class="consent__row">
+        <label>
+          <input type="checkbox" checked disabled />
+          <span><strong>{t(locale, 'consent.necessary')}</strong> — {t(locale, 'consent.necessaryDesc')}</span>
+        </label>
+      </div>
+      {
+        ga4 && (
+          <div class="consent__row">
+            <label>
+              <input type="checkbox" data-consent-analytics />
+              <span><strong>{t(locale, 'consent.analytics')}</strong> — {t(locale, 'consent.analyticsDesc')}</span>
+            </label>
+          </div>
+        )
+      }
+      <div class="consent__row">
+        <label>
+          <input type="checkbox" data-consent-maps />
+          <span><strong>{t(locale, 'consent.maps')}</strong> — {t(locale, 'consent.mapsDesc')}</span>
+        </label>
+      </div>
+      <button type="button" class="btn btn--small" data-consent-save>{t(locale, 'consent.save')}</button>
+    </div>
+
+    <div class="consent__actions">
+      <button type="button" class="btn btn--small" data-consent-accept>{t(locale, 'consent.acceptAll')}</button>
+      <button type="button" class="btn btn--small btn--ghost" data-consent-reject>{t(locale, 'consent.rejectAll')}</button>
+      <button type="button" class="consent__more" data-consent-toggle aria-expanded="false">{t(locale, 'consent.customize')}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/consent.ts';
+</script>
+
+<style>
+  .consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 90;
+    background: transparent;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.75rem;
+  }
+  .consent[hidden] {
+    display: none;
+  }
+  .consent__panel {
+    pointer-events: auto;
+    width: min(100%, 34rem);
+    background: var(--olive-900);
+    color: var(--straw);
+    border: 1.5px solid var(--esparto);
+    border-radius: 2px;
+    padding: 1.25rem 1.25rem 1rem;
+    max-height: min(80dvh, 34rem);
+    overflow-y: auto;
+    animation: consent-in 0.6s var(--ease-out);
+  }
+  @keyframes consent-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  .consent__panel:focus {
+    outline-offset: 2px;
+  }
+  .consent__title {
+    font-size: var(--fs-2);
+    margin-bottom: 0.5rem;
+  }
+  .consent__text {
+    font-size: var(--fs-sm);
+    color: var(--on-olive-muted);
+    max-width: 52ch;
+  }
+  .consent__text a {
+    color: var(--straw);
+    font-weight: 650;
+  }
+  .consent__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.75rem;
+    margin-top: 1rem;
+  }
+  .consent__more {
+    background: none;
+    border: 0;
+    color: var(--straw);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    min-height: 2.75rem;
+    padding: 0 0.5rem;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+  .consent__details {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .consent__row label {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: var(--fs-sm);
+    color: var(--on-olive-muted);
+    cursor: pointer;
+  }
+  .consent__row strong {
+    color: var(--straw);
+  }
+  .consent__row input {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.1rem;
+    flex: none;
+    accent-color: var(--esparto);
+  }
+  .consent__details .btn {
+    justify-self: start;
+    margin-top: 0.25rem;
+  }
+  .consent .btn--ghost {
+    --btn-fg: var(--straw);
+  }
+  .consent .btn--ghost:hover {
+    --btn-bg: var(--straw);
+    --btn-fg: var(--olive-900);
+    --btn-bd: var(--straw);
+  }
+</style>

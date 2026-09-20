@@ -1,0 +1,56 @@
+---
+import { t, pathFor, type Locale, type PageKey } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+  title: string;
+  lead?: string;
+}
+const { locale, pageKey, title, lead } = Astro.props;
+---
+
+<header class="phead on-olive">
+  <div class="wrap phead__inner">
+    <nav class="phead__crumbs" aria-label="Breadcrumb">
+      <ol role="list">
+        <li><a href={pathFor(locale, 'home')}>{t(locale, 'nav.home')}</a></li>
+        <li aria-current="page">{t(locale, `nav.${pageKey}`)}</li>
+      </ol>
+    </nav>
+    <h1 class="h-1 phead__title">{title}</h1>
+    {lead && <p class="lede phead__lead">{lead}</p>}
+  </div>
+  <div class="plait plait--dark" aria-hidden="true"></div>
+</header>
+
+<style>
+  .phead {
+    padding-top: var(--header-h);
+  }
+  .phead__inner {
+    display: grid;
+    gap: 1rem;
+    padding-block: clamp(2.5rem, 2rem + 4vw, 5.5rem) clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+  .phead__crumbs ol {
+    display: flex;
+    gap: 0.6rem;
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+  }
+  .phead__crumbs li + li::before {
+    content: '/';
+    margin-right: 0.6rem;
+    opacity: 0.6;
+  }
+  .phead__crumbs a {
+    text-underline-offset: 0.25em;
+  }
+  .phead__crumbs [aria-current] {
+    color: var(--fg);
+  }
+  .phead__lead {
+    max-width: 44rem;
+    color: var(--on-olive-muted);
+  }
+</style>

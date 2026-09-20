@@ -1,0 +1,78 @@
+---
+import Photo from './Photo.astro';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { restaurant } from '../config/restaurant.config.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<section class="intro section on-straw-deep" aria-labelledby="intro-title">
+  <div class="wrap intro__grid">
+    <div class="intro__copy reveal">
+      <h2 id="intro-title" class="h-1">{t(locale, 'intro.title')}</h2>
+      <p class="lede">{t(locale, 'intro.p1')}</p>
+      <p class="muted">{t(locale, 'intro.p2')}</p>
+      <p><a class="btn btn--olive" href={pathFor(locale, 'about')}>{t(locale, 'cta.story')}</a></p>
+    </div>
+    <div class="intro__visual reveal" style="--reveal-delay: 0.12s">
+      <Photo photo="diningRoom" locale={locale} framed sizes="(min-width: 64em) 38vw, 92vw" widths={[480, 768, 1024]} />
+      <p class="intro__stamp" aria-hidden="true">
+        <span class="intro__year">{restaurant.foundedYear}</span>
+        <span>{t(locale, 'intro.family')}</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+  .intro__copy {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+  }
+  .intro__visual {
+    position: relative;
+  }
+  .intro__visual :global(img) {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  /* etiqueta atada: sello de 1986 */
+  .intro__stamp {
+    position: absolute;
+    left: clamp(1.25rem, 3vw, 2.25rem);
+    bottom: clamp(-1.5rem, -2vw, -0.75rem);
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.9rem 1.25rem 0.8rem;
+    background: var(--olive-800);
+    color: var(--straw);
+    border: 2px solid var(--esparto);
+    border-radius: 2px;
+    text-align: center;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .intro__year {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: none;
+  }
+  @media (min-width: 64em) {
+    .intro__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

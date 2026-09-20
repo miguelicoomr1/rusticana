@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ReservationForm from '../components/ReservationForm.astro';
+import OpeningHours from '../components/OpeningHours.astro';
+import Icon from '../components/Icon.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { telHref, whatsappHref } from '../lib/contact.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { breadcrumbJsonLd, restaurantJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="reservations"
+  title={t(locale, 'seo.reservations.title')}
+  description={t(locale, 'seo.reservations.description')}
+  jsonLd={[
+    restaurantJsonLd(locale),
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: t(locale, 'nav.reservations'), path: pathFor(locale, 'reservations') },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey="reservations" title={t(locale, 'reservationsPage.title')} lead={t(locale, 'reservationsPage.lead')} />
+
+  <div class="section--tight">
+    <div class="wrap res">
+      <div class="res__ways">
+        <a class="way" href={telHref} data-track="call">
+          <Icon name="phone" />
+          <span>
+            <strong>{t(locale, 'reservationsPage.callTitle')}</strong>
+            <span class="way__big tabular">{restaurant.phone.display}</span>
+            <span class="muted">{t(locale, 'reservationsPage.callText')}</span>
+          </span>
+        </a>
+        <a class="way" href={whatsappHref(locale)} target="_blank" rel="noopener" data-track="whatsapp">
+          <Icon name="whatsapp" />
+          <span>
+            <strong>{t(locale, 'reservationsPage.waTitle')}</strong>
+            <span class="way__big">WhatsApp</span>
+            <span class="muted">{t(locale, 'reservationsPage.waText')}</span>
+          </span>
+        </a>
+        <OpeningHours locale={locale} headingLevel="h2" />
+      </div>
+      <ReservationForm locale={locale} />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .res {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    padding-bottom: 2rem;
+  }
+  .res__ways {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .way {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+    text-decoration: none;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .way:hover {
+    transform: translateX(0.4rem);
+  }
+  .way :global(svg) {
+    width: 1.9rem;
+    height: 1.9rem;
+    color: var(--olive-600);
+  }
+  .way > span {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .way__big {
+    font-family: var(--font-display);
+    font-size: var(--fs-3);
+    font-weight: 560;
+    line-height: 1.1;
+  }
+  @media (min-width: 64em) {
+    .res {
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: start;
+    }
+  }
+</style>

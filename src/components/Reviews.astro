@@ -1,0 +1,82 @@
+---
+import { restaurant } from '../config/restaurant.config.ts';
+import { tx, t, type Locale } from '../i18n/index.ts';
+import Icon from './Icon.astro';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const g = restaurant.reviews.google;
+const ta = restaurant.reviews.tripadvisor;
+const nf = new Intl.NumberFormat(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const themes = tx<string[]>(locale, 'reviews.themes');
+---
+
+<section class="reviews section" aria-labelledby="reviews-title">
+  <div class="wrap reviews__grid">
+    <div class="reviews__score reveal">
+      <h2 id="reviews-title" class="h-2">{t(locale, 'reviews.title')}</h2>
+      <p class="lede">
+        {
+          t(locale, 'reviews.summary', {
+            googleRating: nf.format(g.rating),
+            googleCount: g.count,
+            taRating: nf.format(ta.rating),
+            taCount: ta.count,
+          })
+        }
+      </p>
+      <div class="reviews__cta">
+        <a class="btn btn--olive" href={restaurant.maps.placeUrl} target="_blank" rel="noopener">
+          {t(locale, 'cta.viewReviews')}<Icon name="external" /><span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+        </a>
+        <a class="btn btn--ghost" href={restaurant.social.tripadvisor.url} target="_blank" rel="noopener">
+          {t(locale, 'cta.viewTripadvisor')}<Icon name="external" /><span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+        </a>
+      </div>
+    </div>
+    <div class="reveal" style="--reveal-delay: 0.1s">
+      <h3 class="h-4">{t(locale, 'reviews.themesTitle')}</h3>
+      <ul class="reviews__themes" role="list">
+        {themes.map((th) => <li class="paper-tag">{th}</li>)}
+      </ul>
+      <p class="reviews__src muted">{t(locale, 'reviews.sources')}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .reviews__score {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    justify-items: start;
+  }
+  .reviews__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .reviews__themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .reviews__src {
+    margin-top: 1.5rem;
+    font-size: var(--fs-sm);
+    max-width: 52ch;
+  }
+  @media (min-width: 64em) {
+    .reviews__grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+</style>

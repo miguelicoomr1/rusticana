@@ -1,0 +1,227 @@
+---
+import Logo from './Logo.astro';
+import LanguageSelector from './LanguageSelector.astro';
+import Icon from './Icon.astro';
+import { t, pathFor, type Locale, type PageKey } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+  /** El hero de la home va bajo el header: empieza transparente. */
+  overlay?: boolean;
+}
+const { locale, pageKey, overlay = false } = Astro.props;
+const nav: { key: PageKey; label: string }[] = [
+  { key: 'menu', label: t(locale, 'nav.menu') },
+  { key: 'about', label: t(locale, 'nav.about') },
+  { key: 'gallery', label: t(locale, 'nav.gallery') },
+  { key: 'reservations', label: t(locale, 'nav.reservations') },
+  { key: 'contact', label: t(locale, 'nav.contact') },
+];
+---
+
+<header class="site-header" data-overlay={overlay ? 'true' : 'false'} data-header>
+  <div class="site-header__bar wrap">
+    <a class="site-header__logo" href={pathFor(locale, 'home')} aria-label={`${t(locale, 'meta.siteName')} — ${t(locale, 'nav.home')}`}>
+      <Logo />
+    </a>
+
+    <nav class="site-nav" aria-label={t(locale, 'nav.main')}>
+      <ul role="list">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={pathFor(locale, item.key)} aria-current={pageKey === item.key ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__tools">
+      <LanguageSelector locale={locale} pageKey={pageKey} />
+      <a class="btn btn--small site-header__reserve" href={pathFor(locale, 'reservations')}>{t(locale, 'cta.reserve')}</a>
+
+      <details class="mnav" data-mnav>
+        <summary class="mnav__button" aria-label={t(locale, 'nav.openMenu')}>
+          <span class="mnav__open"><Icon name="menu" /></span>
+          <span class="mnav__close"><Icon name="close" /></span>
+        </summary>
+        <div class="mnav__panel on-olive">
+          <nav aria-label={t(locale, 'nav.main')}>
+            <ul role="list">
+              {
+                nav.map((item) => (
+                  <li>
+                    <a href={pathFor(locale, item.key)} aria-current={pageKey === item.key ? 'page' : undefined}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+          <div class="mnav__foot">
+            <a class="btn" href={pathFor(locale, 'reservations')}>{t(locale, 'cta.reserve')}</a>
+            <LanguageSelector locale={locale} pageKey={pageKey} variant="inline" />
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+<div data-header-sentinel aria-hidden="true" class="header-sentinel"></div>
+
+<style>
+  .header-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 64px;
+    pointer-events: none;
+  }
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    color: var(--ink);
+    background: var(--straw);
+    border-bottom: 1px solid var(--straw-line);
+    transition:
+      background-color 0.4s var(--ease-out),
+      color 0.4s var(--ease-out),
+      border-color 0.4s var(--ease-out);
+  }
+  /* sobre el hero: barra olivo opaca (legible sobre cualquier foto) */
+  .site-header[data-overlay='true']:not(.is-solid) {
+    background: var(--olive-800);
+    color: var(--straw);
+    border-bottom-color: var(--olive-900);
+  }
+  .site-header:has(.mnav[open]) {
+    background: var(--olive-800);
+    color: var(--straw);
+    border-bottom-color: transparent;
+  }
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: var(--header-h);
+  }
+  .site-header__logo {
+    text-decoration: none;
+    border-radius: 2px;
+  }
+  .site-nav {
+    display: none;
+  }
+  .site-nav ul {
+    display: flex;
+    gap: clamp(1rem, 2.2vw, 2.25rem);
+  }
+  .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: 0.9375rem;
+    font-weight: 620;
+    letter-spacing: 0.02em;
+    text-decoration: underline 2px transparent;
+    text-underline-offset: 0.5em;
+    transition: text-decoration-color 0.3s var(--ease-out);
+  }
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] {
+    text-decoration-color: currentColor;
+  }
+  .site-header__tools {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.35rem, 0.2rem + 1vw, 0.6rem);
+  }
+  .site-header__reserve {
+    display: none;
+  }
+  @media (min-width: 64em) {
+    .site-nav {
+      display: block;
+    }
+    .site-header__reserve {
+      display: inline-flex;
+    }
+    .mnav {
+      display: none;
+    }
+  }
+
+  /* Mobile menu (details/summary: works without JS) */
+  .mnav__button {
+    list-style: none;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    cursor: pointer;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+  }
+  .mnav__button::-webkit-details-marker {
+    display: none;
+  }
+  .mnav__button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .mnav__close {
+    display: none;
+  }
+  .mnav[open] .mnav__open {
+    display: none;
+  }
+  .mnav[open] .mnav__close {
+    display: block;
+  }
+  .mnav__panel {
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    padding: 2rem var(--gutter) 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    overflow-y: auto;
+    animation: mnav-in 0.45s var(--ease-out);
+  }
+  @keyframes mnav-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  .mnav__panel ul {
+    display: grid;
+  }
+  .mnav__panel li + li {
+    border-top: 1px solid var(--rule);
+  }
+  .mnav__panel nav a {
+    display: block;
+    padding: 1rem 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    font-weight: 540;
+    text-decoration: none;
+    line-height: 1.1;
+  }
+  .mnav__panel nav a[aria-current='page'] {
+    color: var(--esparto);
+  }
+  .mnav__foot {
+    display: grid;
+    gap: 1.5rem;
+  }
+</style>

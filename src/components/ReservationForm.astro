@@ -1,0 +1,252 @@
+---
+import Icon from './Icon.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const r = restaurant.reservation;
+const guests = Array.from({ length: r.maxOnlineGuests }, (_, i) => i + 1);
+const f = (k: string) => t(locale, `reservationsPage.fields.${k}`);
+const err = (k: string, vars?: Record<string, string | number>) => t(locale, `reservationsPage.errors.${k}`, vars);
+const config = {
+  endpoint: r.endpoint,
+  whatsapp: restaurant.whatsapp.number,
+  email: restaurant.email.address,
+  locale,
+  closedDays: restaurant.hours.closedDays,
+  maxGuests: r.maxOnlineGuests,
+  intro: t(locale, 'whatsapp.formIntro'),
+  labels: {
+    name: f('name'),
+    phone: f('phone'),
+    email: f('email'),
+    date: f('date'),
+    time: f('time'),
+    guests: f('guests'),
+    area: f('area'),
+    notes: f('notes'),
+    allergies: f('allergies'),
+  },
+  areas: {
+    none: t(locale, 'reservationsPage.areas.none'),
+    terrace: t(locale, 'reservationsPage.areas.terrace'),
+    indoor: t(locale, 'reservationsPage.areas.indoor'),
+  },
+  errors: {
+    required: err('required'),
+    phone: err('phone'),
+    email: err('email'),
+    date: err('date'),
+    guests: err('guests', { n: r.maxOnlineGuests }),
+    consent: err('consent'),
+  },
+  closedNote: t(locale, 'reservationsPage.closedDay'),
+  msg: {
+    opened: t(locale, 'reservationsPage.opened'),
+    openedEmail: t(locale, 'reservationsPage.openedEmail'),
+    sentTitle: t(locale, 'reservationsPage.sentTitle'),
+    sentText: t(locale, 'reservationsPage.sentText'),
+    error: t(locale, 'reservationsPage.errorGeneric'),
+    sending: t(locale, 'reservationsPage.sending'),
+    subject: `${restaurant.displayName} — ${t(locale, 'reservationsPage.title')}`,
+  },
+};
+---
+
+<form class="rform" novalidate data-rform data-config={JSON.stringify(config)} aria-labelledby="rform-title">
+  <h2 id="rform-title" class="h-3">{t(locale, 'reservationsPage.formTitle')}</h2>
+  <p class="muted">{t(locale, 'reservationsPage.formLead')}</p>
+
+  <div class="rform__grid">
+    <div class="field">
+      <label for="rf-name">{f('name')} <span aria-hidden="true">*</span></label>
+      <input id="rf-name" name="name" type="text" autocomplete="name" required aria-describedby="rf-name-err" />
+      <p class="field__err" id="rf-name-err" role="alert"></p>
+    </div>
+    <div class="field">
+      <label for="rf-phone">{f('phone')} <span aria-hidden="true">*</span></label>
+      <input id="rf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="rf-phone-err" />
+      <p class="field__err" id="rf-phone-err" role="alert"></p>
+    </div>
+    <div class="field field--wide">
+      <label for="rf-email">{f('email')}</label>
+      <input id="rf-email" name="email" type="email" autocomplete="email" aria-describedby="rf-email-err" />
+      <p class="field__err" id="rf-email-err" role="alert"></p>
+    </div>
+    <div class="field">
+      <label for="rf-date">{f('date')} <span aria-hidden="true">*</span></label>
+      <input id="rf-date" name="date" type="date" required aria-describedby="rf-date-err rf-date-note" />
+      <p class="field__err" id="rf-date-err" role="alert"></p>
+      <p class="field__note" id="rf-date-note" aria-live="polite"></p>
+    </div>
+    <div class="field">
+      <label for="rf-time">{f('time')} <span aria-hidden="true">*</span></label>
+      <select id="rf-time" name="time" required aria-describedby="rf-time-err">
+        {r.timeSlots.map((s) => <option value={s}>{s}</option>)}
+      </select>
+      <p class="field__err" id="rf-time-err" role="alert"></p>
+    </div>
+    <div class="field">
+      <label for="rf-guests">{f('guests')} <span aria-hidden="true">*</span></label>
+      <select id="rf-guests" name="guests" required aria-describedby="rf-guests-err">
+        {guests.map((n) => <option value={n} selected={n === 2}>{n}</option>)}
+      </select>
+      <p class="field__note">{t(locale, 'reservationsPage.guestsMore', { n: r.maxOnlineGuests })}</p>
+      <p class="field__err" id="rf-guests-err" role="alert"></p>
+    </div>
+    <div class="field">
+      <label for="rf-area">{f('area')}</label>
+      <select id="rf-area" name="area">
+        {r.areas.map((a) => <option value={a}>{t(locale, `reservationsPage.areas.${a}`)}</option>)}
+      </select>
+    </div>
+    <div class="field field--wide">
+      <label for="rf-allergies">{f('allergies')}</label>
+      <input id="rf-allergies" name="allergies" type="text" placeholder={t(locale, 'reservationsPage.placeholders.allergies')} />
+    </div>
+    <div class="field field--wide">
+      <label for="rf-notes">{f('notes')}</label>
+      <textarea id="rf-notes" name="notes" rows="3" placeholder={t(locale, 'reservationsPage.placeholders.notes')}></textarea>
+    </div>
+    <div class="field field--wide field--check">
+      <input id="rf-consent" name="consent" type="checkbox" required aria-describedby="rf-consent-err" />
+      <label for="rf-consent">
+        {f('consent')} (<a href={pathFor(locale, 'privacy')} target="_blank" rel="noopener">{t(locale, 'nav.privacy')}</a>)
+      </label>
+      <p class="field__err" id="rf-consent-err" role="alert"></p>
+    </div>
+    <!-- honeypot antispam: los humanos no lo ven -->
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+  </div>
+
+  <div class="rform__actions">
+    {
+      r.endpoint ? (
+        <button type="submit" class="btn" data-submit="endpoint">{t(locale, 'reservationsPage.submit')}</button>
+      ) : (
+        <>
+          <button type="submit" class="btn" data-submit="whatsapp"><Icon name="whatsapp" />{t(locale, 'reservationsPage.submitWhatsapp')}</button>
+          <button type="submit" class="btn btn--ghost" data-submit="email"><Icon name="mail" />{t(locale, 'reservationsPage.submitEmail')}</button>
+        </>
+      )
+    }
+  </div>
+  <p class="rform__status" role="status" aria-live="polite" data-status></p>
+</form>
+
+<script>
+  import '../scripts/reservation.ts';
+</script>
+
+<style>
+  .rform {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .rform__grid {
+    display: grid;
+    gap: 1.1rem 1.25rem;
+    grid-template-columns: 1fr;
+    margin-top: 0.5rem;
+  }
+  @media (min-width: 40em) {
+    .rform__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .field--wide {
+      grid-column: 1 / -1;
+    }
+  }
+  .field {
+    display: grid;
+    gap: 0.35rem;
+    align-content: start;
+  }
+  .field label {
+    font-weight: 650;
+    font-size: var(--fs-sm);
+  }
+  .field input:not([type='checkbox']),
+  .field select,
+  .field textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.65rem 0.85rem;
+    background: #fffdf6;
+    border: 1.5px solid var(--olive-700);
+    border-radius: 2px;
+    font-size: 1rem;
+  }
+  .field textarea {
+    resize: vertical;
+  }
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    outline: 3px solid var(--terracotta);
+    outline-offset: 1px;
+  }
+  .field [aria-invalid='true'] {
+    border-color: var(--terracotta-deep);
+    background: #fdf1ea;
+  }
+  .field__err {
+    color: var(--terracotta-deep);
+    font-size: var(--fs-sm);
+    font-weight: 650;
+    min-height: 0;
+  }
+  .field__err:empty {
+    display: none;
+  }
+  .field__note {
+    font-size: var(--fs-xs);
+    color: var(--fg-muted);
+  }
+  .field__note:empty {
+    display: none;
+  }
+  .field--check {
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+    align-items: start;
+  }
+  .field--check input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.1rem;
+    accent-color: var(--olive-700);
+  }
+  .field--check .field__err {
+    grid-column: 1 / -1;
+  }
+  .field--check label {
+    font-weight: 500;
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .rform__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .rform__status {
+    font-weight: 650;
+    min-height: 1.5em;
+  }
+  .rform__status[data-tone='ok'] {
+    color: var(--olive-700);
+  }
+  .rform__status[data-tone='error'] {
+    color: var(--terracotta-deep);
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+/** Imagen responsive: AVIF + WebP + fallback, srcset, dimensiones explícitas (sin CLS), lazy por defecto. */
+import { Picture } from 'astro:assets';
+import { photos, type PhotoKey } from '../data/photos.ts';
+import { t, type Locale } from '../i18n/index.ts';
+
+interface Props {
+  photo: PhotoKey;
+  locale: Locale;
+  sizes?: string;
+  widths?: number[];
+  eager?: boolean;
+  class?: string;
+  /** Sustituye al alt traducido (p.ej. imagen decorativa: alt="") */
+  alt?: string;
+  quality?: number;
+  /** Marco de pleita alrededor de la foto */
+  framed?: boolean;
+}
+const { photo, locale, sizes = '100vw', widths = [480, 768, 1024, 1280], eager = false, class: className, alt, quality = 72, framed = false } = Astro.props;
+const text = alt ?? t(locale, `photos.${photo}`);
+---
+
+{
+  framed ? (
+    <div class="framed">
+      <Picture
+        src={photos[photo]}
+        alt={text}
+        formats={['avif', 'webp']}
+        widths={widths}
+        sizes={sizes}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding={eager ? 'sync' : 'async'}
+        fetchpriority={eager ? 'high' : 'auto'}
+        class={className}
+        quality={quality}
+      />
+    </div>
+  ) : (
+    <Picture
+      src={photos[photo]}
+      alt={text}
+      formats={['avif', 'webp']}
+      widths={widths}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding={eager ? 'sync' : 'async'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      class={className}
+      quality={quality}
+    />
+  )
+}

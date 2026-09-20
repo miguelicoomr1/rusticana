@@ -1,0 +1,177 @@
+---
+import Icon from './Icon.astro';
+import OpeningHours from './OpeningHours.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { addressLines, telHref, whatsappHref } from '../lib/contact.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+  /** Título de sección: h2 en la home, oculto en Contacto (que ya tiene h1). */
+  showTitle?: boolean;
+  showHours?: boolean;
+  showCoords?: boolean;
+}
+const { locale, showTitle = true, showHours = true, showCoords = false } = Astro.props;
+const a = addressLines();
+const { latitude, longitude } = restaurant.geo;
+const fmt = (n: number) => n.toFixed(5);
+---
+
+<section class="loc section" aria-labelledby="loc-title">
+  <div class="wrap loc__grid">
+    <div class="loc__info reveal">
+      <h2 id="loc-title" class:list={['h-2', { 'sr-only': !showTitle }]}>{t(locale, 'location.title')}</h2>
+      <p class="lede">{t(locale, 'location.lead')}</p>
+      <address class="loc__address">
+        <strong>{a.name}</strong><br />
+        {a.street}<br />
+        {a.postal}<br />
+        {a.region}, {a.country}
+      </address>
+      {
+        showCoords && (
+          <p class="muted loc__coords tabular">
+            {t(locale, 'location.coordinates')}: {fmt(latitude)}, {fmt(longitude)}
+          </p>
+        )
+      }
+      <div class="loc__cta">
+        <a class="btn" href={restaurant.maps.directionsUrl} target="_blank" rel="noopener">
+          <Icon name="route" />{t(locale, 'cta.directions')}<span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+        </a>
+        <a class="btn btn--ghost" href={restaurant.maps.placeUrl} target="_blank" rel="noopener">
+          {t(locale, 'cta.openMaps')}<Icon name="external" /><span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+        </a>
+        <a class="btn btn--ghost" href={telHref}><Icon name="phone" />{t(locale, 'cta.call')}</a>
+        <a class="btn btn--ghost" href={whatsappHref(locale)} target="_blank" rel="noopener"><Icon name="whatsapp" />{t(locale, 'cta.whatsapp')}</a>
+      </div>
+      {showHours && <OpeningHours locale={locale} headingLevel="h3" />}
+    </div>
+
+    <div class="loc__map reveal" style="--reveal-delay: 0.1s" data-map data-src={restaurant.maps.embedUrl} data-title={t(locale, 'location.mapTitle')}>
+      <div class="loc__placeholder" data-map-placeholder>
+        <svg class="loc__pin" viewBox="0 0 48 64" aria-hidden="true" focusable="false">
+          <path d="M24 2C13 2 4 11 4 22c0 15 20 40 20 40s20-25 20-40C44 11 35 2 24 2Z" fill="var(--terracotta)"></path>
+          <circle cx="24" cy="22" r="8" fill="var(--straw)"></circle>
+        </svg>
+        <p class="loc__place">{a.name}</p>
+        <p class="muted">{t(locale, 'contactPage.areaNote')}</p>
+        <button type="button" class="btn btn--olive" data-map-load>{t(locale, 'location.loadMap')}</button>
+        <p class="loc__hint muted">{t(locale, 'location.mapConsent')}</p>
+        <p class="loc__hint"><a href={pathFor(locale, 'cookies')}>{t(locale, 'nav.cookies')}</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { readConsent } from '../scripts/consent.ts';
+  const box = document.querySelector<HTMLElement>('[data-map]');
+  if (box) {
+    const load = () => {
+      const ph = box.querySelector('[data-map-placeholder]');
+      if (!ph || box.querySelector('iframe')) return;
+      const f = document.createElement('iframe');
+      f.src = box.dataset.src || '';
+      f.title = box.dataset.title || '';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.setAttribute('allowfullscreen', '');
+      ph.replaceWith(f);
+    };
+    box.querySelector('[data-map-load]')?.addEventListener('click', load);
+    if (readConsent()?.maps) load();
+    document.addEventListener('rusticana:consent', (e) => {
+      if ((e as CustomEvent).detail?.maps) load();
+    });
+  }
+</script>
+
+<style>
+  .loc__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .loc__grid > * {
+    min-width: 0;
+  }
+  .loc__info {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+  }
+  .loc__address {
+    font-size: var(--fs-1);
+    line-height: 1.55;
+  }
+  .loc__coords {
+    font-size: var(--fs-sm);
+  }
+  .loc__cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .loc__cta .btn {
+    min-width: 0;
+  }
+  .loc__cta .btn:first-child {
+    grid-column: 1 / -1;
+  }
+  @media (max-width: 26em) {
+    .loc__cta {
+      grid-template-columns: 1fr;
+    }
+  }
+  .loc__map {
+    min-height: 20rem;
+    max-height: 30rem;
+    border: 1.5px solid var(--olive-800);
+    border-radius: 2px;
+    background: var(--straw-deep);
+    overflow: hidden;
+    position: relative;
+  }
+  .loc__map :global(iframe) {
+    width: 100%;
+    height: 100%;
+    min-height: 26rem;
+    border: 0;
+    display: block;
+  }
+  .loc__placeholder {
+    height: 100%;
+    min-height: 20rem;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.6rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background-image: var(--plait);
+    background-size: 28px 22px;
+    background-position: center top;
+    background-repeat: repeat-x;
+    padding-top: 3.5rem;
+  }
+  .loc__pin {
+    width: 2.75rem;
+    height: auto;
+  }
+  .loc__place {
+    font-family: var(--font-display);
+    font-size: var(--fs-3);
+    font-weight: 560;
+    line-height: 1.1;
+  }
+  .loc__hint {
+    font-size: var(--fs-xs);
+    max-width: 32ch;
+  }
+  @media (min-width: 64em) {
+    .loc__grid {
+      grid-template-columns: 1fr 1.05fr;
+      align-items: start;
+    }
+  }
+</style>

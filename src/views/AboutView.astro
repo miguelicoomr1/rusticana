@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Photo from '../components/Photo.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import { t, tx, pathFor, type Locale } from '../i18n/index.ts';
+import { breadcrumbJsonLd, restaurantJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const sections = ['s1', 's2', 's3', 's4'] as const;
+const timeline = tx<{ year: string; text: string }[]>(locale, 'aboutPage.timeline');
+const photoFor = { s1: 'terraceEvening', s2: 'playground', s3: 'terraceDay', s4: 'dishPaella' } as const;
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="about"
+  title={t(locale, 'seo.about.title')}
+  description={t(locale, 'seo.about.description')}
+  jsonLd={[
+    restaurantJsonLd(locale),
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: t(locale, 'nav.about'), path: pathFor(locale, 'about') },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey="about" title={t(locale, 'aboutPage.title')} lead={t(locale, 'aboutPage.lead')} />
+
+  <div class="section">
+    <div class="wrap about">
+      {
+        sections.map((s, i) => (
+          <section class:list={['about__row reveal', { 'about__row--flip': i % 2 === 1 }]} aria-labelledby={`about-${s}`}>
+            <div class="about__text">
+              <h2 id={`about-${s}`} class="h-2">{t(locale, `aboutPage.${s}.title`)}</h2>
+              <p class="lede">{t(locale, `aboutPage.${s}.text`)}</p>
+            </div>
+            <Photo photo={photoFor[s]} locale={locale} framed sizes="(min-width: 64em) 40vw, 92vw" widths={[480, 768, 1024]} />
+          </section>
+        ))
+      }
+    </div>
+  </div>
+
+  <section class="on-straw-deep section" aria-labelledby="tl-title">
+    <div class="wrap wrap--narrow">
+      <h2 id="tl-title" class="h-2">{t(locale, 'aboutPage.timelineTitle')}</h2>
+      <ol class="timeline" role="list">
+        {
+          timeline.map((e) => (
+            <li class="timeline__item reveal">
+              <span class="timeline__year tabular">{e.year}</span>
+              <p>{e.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p>
+        <a class="text-link" href="https://www.orm.es/programas/el-rompeolas/rutas-gastronomicas-por-la-trimilenaria-la-rusticana-en-la-manga-club/" target="_blank" rel="noopener">
+          {t(locale, 'aboutPage.press')} ↗<span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <ReservationCTA locale={locale} />
+</BaseLayout>
+
+<style>
+  .about {
+    display: grid;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+  .about__row {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .about__text {
+    display: grid;
+    gap: 1rem;
+  }
+  .about__row :global(img) {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  @media (min-width: 64em) {
+    .about__row {
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+    }
+    .about__row--flip :global(.framed) {
+      order: -1;
+    }
+  }
+  .timeline {
+    margin-block: 2rem 2rem;
+    display: grid;
+  }
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.25rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .timeline__item:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline__year {
+    font-family: var(--font-display);
+    font-size: var(--fs-3);
+    font-weight: 600;
+    color: var(--olive-700);
+    line-height: 1;
+  }
+</style>

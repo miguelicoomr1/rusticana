@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-20T00:00:00Z",
+  "title": "Design System: La Rusticana",
+  "extensions": {
+    "colorMeta": {
+      "olive-800": { "role": "primary", "displayName": "Olive Field", "canonical": "#2c3a20", "tonalRamp": ["#1c2413", "#232d18", "#2c3a20", "#3c4d2a", "#4d6035", "#62733c", "#8c9a5c", "#b4bf86"] },
+      "esparto": { "role": "secondary", "displayName": "Esparto Tan", "canonical": "#d5c28f", "tonalRamp": ["#7a6a3d", "#b39a5b", "#c4ad76", "#d5c28f", "#dfcfa4", "#eadbb0", "#f0e6c9", "#f7f0dc"] },
+      "straw": { "role": "neutral", "displayName": "Straw", "canonical": "#f4eedd", "tonalRamp": ["#b8a878", "#d8ccab", "#e3d8ba", "#ebe2c8", "#f0e9d3", "#f4eedd", "#f8f4e8", "#fcfaf3"] },
+      "terracotta": { "role": "tertiary", "displayName": "Terracotta", "canonical": "#a54725", "tonalRamp": ["#4a1f0e", "#6a2d14", "#8a3a1c", "#a54725", "#bd6444", "#cf8465", "#e0a78d", "#f0cdbb"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#26281b", "tonalRamp": ["#26281b", "#3a3c2d", "#5b5546", "#7c7663", "#9d9782", "#bdb8a2", "#d8d3bf", "#ece8d8"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Restaurant name in the hero." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings." },
+      "title": { "displayName": "Title", "purpose": "Sub-headings and mobile nav." },
+      "body": { "displayName": "Body", "purpose": "Running text, 66ch measure." },
+      "label": { "displayName": "Label", "purpose": "Button and stamp captions." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All transitions and reveals (0.25s controls, 0.9s reveals)." }
+    ],
+    "breakpoints": [
+      { "name": "form", "value": "40em" },
+      { "name": "gallery", "value": "48em" },
+      { "name": "desktop", "value": "64em" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The Reservar action; the only terracotta fill.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Reservar mesa</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.8rem 1.6rem;background:var(--terracotta,#a54725);color:#fff9ee;border:2px solid var(--terracotta,#a54725);border-radius:2px;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.875rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,border-color .25s}.ds-btn:hover{background:#8a3a1c;border-color:#8a3a1c}.ds-btn:focus-visible{outline:3px solid #3c4d2a;outline-offset:3px}.ds-btn:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action; outline that inverts on hover.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Ver carta</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.8rem 1.6rem;background:transparent;color:#26281b;border:2px solid currentColor;border-radius:2px;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.875rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s}.ds-btn-ghost:hover{background:#26281b;color:#f4eedd}.ds-btn-ghost:focus-visible{outline:3px solid #3c4d2a;outline-offset:3px}"
+    },
+    {
+      "name": "Paper Tag",
+      "kind": "chip",
+      "refersTo": "paper-tag",
+      "description": "Menu category label with a punched eyelet.",
+      "html": "<span class=\"ds-tag\">Entrantes</span>",
+      "css": ".ds-tag{position:relative;display:inline-flex;align-items:center;padding:.4rem 1rem .4rem 1.85rem;background:#ebe2c8;border:1px solid #d8ccab;border-radius:2px 14px 14px 2px;font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:650;font-size:.9375rem;color:#26281b}.ds-tag::before{content:'';position:absolute;left:.7rem;top:50%;width:.6rem;height:.6rem;margin-top:-.3rem;border-radius:50%;background:#f4eedd;border:1.5px solid #3c4d2a}"
+    },
+    {
+      "name": "Plait Band",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Signature braid divider.",
+      "html": "<div class=\"ds-plait\"></div>",
+      "css": ".ds-plait{height:22px;border-block:1px solid #b39a5b;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='22' viewBox='0 0 28 22'%3E%3Crect width='28' height='22' fill='%23d5c28f'/%3E%3Cpath d='M0 0 14 11 28 0 M0 11 14 22 28 11' fill='none' stroke='%23b39a5b' stroke-width='2.4'/%3E%3Cpath d='M0 3.2 14 14.2 28 3.2 M0 14.2 14 25.2 28 14.2 M0 -7.8 14 3.2 28 -7.8' fill='none' stroke='%23eadbb0' stroke-width='1.2'/%3E%3C/svg%3E\") repeat-x center/28px 22px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Reservation form input.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Nombre\">",
+      "css": ".ds-input{width:100%;min-height:3rem;padding:.65rem .85rem;background:#fffdf6;border:1.5px solid #3c4d2a;border-radius:2px;font:inherit;font-size:1rem;color:#26281b}.ds-input:focus-visible{outline:3px solid #a54725;outline-offset:1px}"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Header link with growing underline.",
+      "html": "<a class=\"ds-nav\" href=\"#\">Carta</a>",
+      "css": ".ds-nav{display:inline-flex;align-items:center;min-height:2.75rem;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.9375rem;font-weight:620;letter-spacing:.02em;color:#26281b;text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 calc(100% - .55rem)/0 2px;transition:background-size .4s}.ds-nav:hover{background-size:100% 2px}.ds-nav:focus-visible{outline:3px solid #3c4d2a;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Pleita",
+    "overview": "The site is one plaited-esparto object (pleita, the Murcian craft). Straw is the ground, olive is the drenched field, and a two-tone herringbone braid divides sections and frames photographs. Menu categories and dish labels are paper tags with a punched eyelet. Everything is flat, matte, and hard-cornered; the only ornament is the plait itself, which is a real material of the place.",
+    "keyCharacteristics": [
+      "Straw ground with olive-field sections and a straw-deep alternate.",
+      "Plait band as the signature divider and photo frame.",
+      "Scale jump: huge serif names against small grotesque labels.",
+      "Zero shadows, zero gradients as surface treatment, 2px corners.",
+      "One 8px module drives spacing."
+    ],
+    "rules": [
+      { "name": "The Three Dyes Rule", "body": "Only olive, straw/esparto, and terracotta appear. Terracotta is the smallest area on any screen and always means act or attention.", "section": "colors" },
+      { "name": "The Field Swap Rule", "body": "Sections switch tone by re-binding --bg/--fg/--rule/--focus (.on-olive, .on-straw-deep), never by ad hoc colors.", "section": "colors" },
+      { "name": "The Scale Jump Rule", "body": "Big serif against footnote-size grotesque; skip the middle sizes for emphasis.", "section": "typography" },
+      { "name": "The Flat Rule", "body": "Separate with tone, hairline, or plait; never with a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do divide sections with the plait band or a tone swap.",
+      "Do keep terracotta to the reserve action and small marks.",
+      "Do use 2px corners and 1px hairlines.",
+      "Do space in multiples of the 8px module.",
+      "Do honor prefers-reduced-motion; reveals are 0.9s ease-out and visible by default."
+    ],
+    "donts": [
+      "Don't use shadows, gradient surfaces, black grounds, or gold.",
+      "Don't build card grids or floating cards; use rows, rules, and tags.",
+      "Don't introduce a fourth dye or a second accent.",
+      "Don't use tech or glyph iconography."
+    ]
+  }
+}

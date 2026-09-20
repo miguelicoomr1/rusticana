@@ -1,0 +1,50 @@
+---
+/** Raíz: selector/redirección de idioma. x-default de hreflang apunta a la versión española. */
+import '../styles/global.css';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor } from '../i18n/index.ts';
+import { abs } from '../lib/seo.ts';
+const target = pathFor(DEFAULT_LOCALE, 'home');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurante La Rusticana · Atamaría, La Manga Club</title>
+    <meta name="description" content="Restaurante La Rusticana, Atamaría (La Manga Club, Cartagena). Elige idioma: Español, English, Deutsch, Français, Nederlands." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={abs(target)} />
+    {LOCALES.map((l) => <link rel="alternate" hreflang={LOCALE_META[l].hreflang} href={abs(pathFor(l, 'home'))} />)}
+    <link rel="alternate" hreflang="x-default" href={abs(target)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <noscript><meta http-equiv="refresh" content={`0;url=${target}`} /></noscript>
+    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE }}>
+      (function () {
+        let pick = fallback;
+        try {
+          const saved = localStorage.getItem('rusticana-lang');
+          if (saved && locales.indexOf(saved) > -1) pick = saved;
+          else {
+            const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+            for (let i = 0; i < langs.length; i++) {
+              const l = String(langs[i]).slice(0, 2).toLowerCase();
+              if (locales.indexOf(l) > -1) { pick = l; break; }
+            }
+          }
+        } catch {
+          /* almacenamiento bloqueado */
+        }
+        location.replace('/' + pick + '/');
+      })();
+    </script>
+  </head>
+  <body class="on-olive" style="display:grid;place-content:center;min-height:100dvh;text-align:center;gap:1.25rem;padding:2rem">
+    <h1 class="h-1">La Rusticana</h1>
+    <ul role="list" style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center">
+      {LOCALES.map((l) => (
+        <li><a class="btn btn--ghost" style="--btn-fg:var(--straw)" href={pathFor(l, 'home')} hreflang={LOCALE_META[l].hreflang} lang={LOCALE_META[l].hreflang}>{LOCALE_META[l].nativeName}</a></li>
+      ))}
+    </ul>
+  </body>
+</html>

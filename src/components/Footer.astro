@@ -1,0 +1,210 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import LanguageSelector from './LanguageSelector.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { t, pathFor, type Locale, type PageKey } from '../i18n/index.ts';
+import { telHref, mailHref, addressLines, whatsappHref } from '../lib/contact.ts';
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+}
+const { locale, pageKey } = Astro.props;
+const addr = addressLines();
+const explore: PageKey[] = ['menu', 'about', 'gallery', 'reservations', 'contact'];
+const legal: PageKey[] = ['legal', 'privacy', 'cookies'];
+const year = new Date().getFullYear();
+const socials = [
+  { name: 'Instagram', icon: 'instagram' as const, url: restaurant.social.instagram.url, ok: restaurant.social.instagram.status === 'confirmed' },
+  { name: 'Facebook', icon: 'facebook' as const, url: restaurant.social.facebook.url, ok: restaurant.social.facebook.status === 'confirmed' },
+  { name: 'Tripadvisor', icon: 'tripadvisor' as const, url: restaurant.social.tripadvisor.url, ok: restaurant.social.tripadvisor.status === 'confirmed' },
+].filter((s) => s.ok);
+---
+
+<footer class="site-footer on-olive">
+  <div class="plait plait--dark" aria-hidden="true"></div>
+  <div class="wrap site-footer__grid">
+    <div class="site-footer__brand">
+      <a href={pathFor(locale, 'home')} class="site-footer__logo" aria-label={`${t(locale, 'meta.siteName')} — ${t(locale, 'nav.home')}`}>
+        <Logo />
+      </a>
+      <p class="site-footer__since">{t(locale, 'footer.since', { year: restaurant.foundedYear })}</p>
+      <ul class="site-footer__social" role="list">
+        {
+          socials.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener me" aria-label={`${s.name} (${t(locale, 'a11y.newWindow')})`}>
+                <Icon name={s.icon} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">{t(locale, 'footer.visit')}</h2>
+      <address>
+        <strong>{addr.name}</strong><br />
+        {addr.street}<br />
+        {addr.postal}<br />
+        {addr.region}, {addr.country}
+      </address>
+      <ul class="site-footer__contact" role="list">
+        <li><a href={telHref}>{restaurant.phone.display}</a></li>
+        <li><a href={mailHref}>{restaurant.email.address}</a></li>
+        <li><a href={whatsappHref(locale)} target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">{t(locale, 'footer.explore')}</h2>
+      <ul role="list" class="site-footer__links">
+        {explore.map((k) => <li><a href={pathFor(locale, k)}>{t(locale, `nav.${k === 'reservations' ? 'reservations' : k}`)}</a></li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="site-footer__title">{t(locale, 'nav.language')}</h2>
+      <LanguageSelector locale={locale} pageKey={pageKey} variant="inline" />
+    </div>
+  </div>
+
+  <div class="wrap site-footer__legal">
+    <ul role="list" class="site-footer__legal-links">
+      {legal.map((k) => <li><a href={pathFor(locale, k)}>{t(locale, `nav.${k}`)}</a></li>)}
+      <li><button type="button" class="linklike" data-consent-open>{t(locale, 'consent.manage')}</button></li>
+    </ul>
+    <p>© {year} {restaurant.displayName}. {t(locale, 'footer.rights')}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 0;
+    padding-bottom: 6rem;
+  }
+  @media (min-width: 64em) {
+    .site-footer {
+      padding-bottom: 0;
+    }
+  }
+  .site-footer__grid {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: 4rem 3rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 48em) {
+    .site-footer__grid {
+      grid-template-columns: 1.2fr 1.2fr 0.8fr;
+    }
+    .site-footer__grid > :last-child {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (min-width: 64em) {
+    .site-footer__grid {
+      grid-template-columns: 1.3fr 1.2fr 0.8fr 1.3fr;
+    }
+    .site-footer__grid > :last-child {
+      grid-column: auto;
+    }
+  }
+  .site-footer__logo {
+    text-decoration: none;
+    display: inline-block;
+  }
+  .site-footer__since {
+    margin-top: 1rem;
+    color: var(--fg-muted);
+    max-width: 28ch;
+    font-size: var(--fs-sm);
+  }
+  .site-footer__social {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .site-footer__social a {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1.5px solid var(--rule);
+    border-radius: 2px;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+  .site-footer__social a:hover {
+    border-color: var(--fg);
+    background: color-mix(in srgb, var(--fg) 10%, transparent);
+  }
+  .site-footer__social svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .site-footer__title {
+    font-family: var(--font-text);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--esparto);
+    margin-bottom: 1rem;
+  }
+  address {
+    line-height: 1.7;
+  }
+  .site-footer__contact,
+  .site-footer__links {
+    display: grid;
+    gap: 0.15rem;
+    margin-top: 0.85rem;
+  }
+  .site-footer__links {
+    margin-top: 0;
+  }
+  .site-footer__contact a,
+  .site-footer__links a,
+  .site-footer__legal a,
+  .linklike {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    text-underline-offset: 0.25em;
+  }
+  .site-footer__links a {
+    text-decoration: none;
+  }
+  .site-footer__links a:hover,
+  .site-footer__contact a:hover {
+    text-decoration: underline;
+  }
+  .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-block: 1.25rem 1.75rem;
+    border-top: 1px solid var(--rule);
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+  }
+  .site-footer__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+  }
+  .linklike {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    font-size: inherit;
+  }
+</style>

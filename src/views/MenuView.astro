@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MenuCategory from '../components/MenuCategory.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import { itemsByCategory, localized } from '../lib/menu.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { breadcrumbJsonLd, restaurantJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const cats = itemsByCategory();
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="menu"
+  title={t(locale, 'seo.menu.title')}
+  description={t(locale, 'seo.menu.description')}
+  jsonLd={[
+    restaurantJsonLd(locale),
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: t(locale, 'nav.menu'), path: pathFor(locale, 'menu') },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey="menu" title={t(locale, 'menuPage.title')} lead={t(locale, 'menuPage.intro')} />
+
+  <div class="menu-tabs" data-menu-tabs>
+    <nav class="wrap" aria-label={t(locale, 'menuPage.categoriesLabel')}>
+      <ul role="list">
+        {
+          cats.map((c) => (
+            <li>
+              <a class="tag paper-tag" href={`#cat-${c.id}`}>{localized(c.name, locale)}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="section--tight">
+    <div class="wrap menu-wrap">
+      <aside class="menu-note" aria-labelledby="allergen-title">
+        <h2 id="allergen-title" class="h-4">{t(locale, 'menuPage.allergenTitle')}</h2>
+        <p>{t(locale, 'menuPage.allergenText')}</p>
+      </aside>
+      <div class="menu-cols">
+        {cats.map((c) => <MenuCategory category={c} locale={locale} />)}
+      </div>
+      <p class="menu-foot muted">{t(locale, 'menuPage.updated')}</p>
+    </div>
+  </div>
+
+  <ReservationCTA locale={locale} />
+</BaseLayout>
+
+<script>
+  /* Resalta la categoría visible en la barra de etiquetas. */
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-menu-tabs] a')];
+  const sections = links.map((a) => document.querySelector<HTMLElement>(a.hash)).filter(Boolean) as HTMLElement[];
+  if ('IntersectionObserver' in window && sections.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          links.forEach((a) => a.toggleAttribute('data-active', a.hash === `#${e.target.id}`));
+          const active = links.find((a) => a.hasAttribute('data-active'));
+          active?.scrollIntoView({ block: 'nearest', inline: 'center' });
+        }
+      },
+      { rootMargin: '-30% 0px -60% 0px' },
+    );
+    sections.forEach((s) => io.observe(s));
+  }
+</script>
+
+<style>
+  .menu-tabs {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 30;
+    background: var(--straw);
+    border-bottom: 1px solid var(--rule);
+  }
+  .menu-tabs ul {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-block: 0.65rem;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+  .menu-tabs ul::-webkit-scrollbar {
+    display: none;
+  }
+  .menu-tabs li {
+    flex: none;
+    scroll-snap-align: center;
+  }
+  /* etiqueta atada: papel con ojal */
+  .tag {
+    min-height: 2.75rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background-color 0.25s,
+      color 0.25s,
+      border-color 0.25s;
+  }
+  .tag:hover {
+    border-color: var(--olive-700);
+  }
+  .tag[data-active] {
+    background: var(--olive-800);
+    color: var(--straw);
+    border-color: var(--olive-800);
+  }
+  .tag[data-active]::before {
+    background: var(--esparto);
+    border-color: var(--esparto);
+  }
+  .menu-wrap {
+    width: min(100% - var(--gutter) * 2, 72rem);
+  }
+  .menu-cols {
+    display: block;
+  }
+  @media (min-width: 64em) {
+    .menu-cols {
+      columns: 2;
+      column-gap: 4.5rem;
+    }
+  }
+  .menu-note {
+    max-width: 52rem;
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--straw-deep);
+    border: 1px solid var(--straw-line);
+    border-radius: 2px;
+    font-size: var(--fs-sm);
+  }
+  .menu-foot {
+    margin-top: 3rem;
+    font-size: var(--fs-sm);
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+/**
+ * Iconos: Lucide (ISC, trazo) + Simple Icons (CC0, marcas). Decorativos: aria-hidden.
+ * Los SVG se incrustan en build; no se descarga ninguna librería en cliente.
+ */
+import { siInstagram, siFacebook, siWhatsapp, siTripadvisor } from 'simple-icons';
+import phone from 'lucide-static/icons/phone.svg?raw';
+import chat from 'lucide-static/icons/message-circle.svg?raw';
+import route from 'lucide-static/icons/navigation.svg?raw';
+import calendar from 'lucide-static/icons/calendar-days.svg?raw';
+import menu from 'lucide-static/icons/menu.svg?raw';
+import close from 'lucide-static/icons/x.svg?raw';
+import arrow from 'lucide-static/icons/arrow-right.svg?raw';
+import external from 'lucide-static/icons/external-link.svg?raw';
+import chevron from 'lucide-static/icons/chevron-down.svg?raw';
+import star from 'lucide-static/icons/star.svg?raw';
+import leaf from 'lucide-static/icons/leaf.svg?raw';
+import flame from 'lucide-static/icons/flame.svg?raw';
+import car from 'lucide-static/icons/car.svg?raw';
+import baby from 'lucide-static/icons/baby.svg?raw';
+import music from 'lucide-static/icons/music.svg?raw';
+import access from 'lucide-static/icons/accessibility.svg?raw';
+import sun from 'lucide-static/icons/sun.svg?raw';
+import clock from 'lucide-static/icons/clock.svg?raw';
+import mail from 'lucide-static/icons/mail.svg?raw';
+import pin from 'lucide-static/icons/map-pin.svg?raw';
+import trees from 'lucide-static/icons/trees.svg?raw';
+import utensils from 'lucide-static/icons/utensils.svg?raw';
+import wine from 'lucide-static/icons/wine.svg?raw';
+
+const lucide = { phone, chat, route, calendar, menu, close, arrow, external, chevron, star, leaf, flame, car, baby, music, access, sun, clock, mail, pin, trees, utensils, wine };
+const brands = {
+  instagram: siInstagram.path,
+  facebook: siFacebook.path,
+  whatsapp: siWhatsapp.path,
+  tripadvisor: siTripadvisor.path,
+};
+
+type LucideName = keyof typeof lucide;
+type BrandName = keyof typeof brands;
+interface Props {
+  name: LucideName | BrandName;
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+const isBrand = name in brands;
+const inner = isBrand ? '' : (lucide[name as LucideName].match(/<svg[^>]*>([\s\S]*)<\/svg>/)?.[1] ?? '');
+---
+
+{
+  isBrand ? (
+    <svg class={className} width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d={brands[name as BrandName]} />
+    </svg>
+  ) : (
+    <svg
+      class={className}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      set:html={inner}
+    />
+  )
+}

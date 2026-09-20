@@ -1,0 +1,89 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import { tx, t, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+type Item = { title: string; text: string; icon: 'sun' | 'flame' | 'baby' | 'car' | 'music' | 'utensils' };
+const items = tx<Item[]>(locale, 'ambience.items');
+---
+
+<section class="amb on-olive section" aria-labelledby="amb-title">
+  <div class="wrap amb__grid">
+    <div class="amb__lead reveal">
+      <h2 id="amb-title" class="h-1">{t(locale, 'ambience.title')}</h2>
+      <p class="lede">{t(locale, 'ambience.lead')}</p>
+      <Photo photo="terraceDay" locale={locale} framed sizes="(min-width: 64em) 34vw, 92vw" widths={[480, 768, 1024]} />
+      <p class="amb__access">{t(locale, 'ambience.access')}</p>
+    </div>
+    <ul class="amb__list" role="list">
+      {
+        items.map((it, i) => (
+          <li class="amb__item reveal" style={`--reveal-delay: ${i * 0.06}s`}>
+            <Icon name={it.icon} class="amb__icon" />
+            <div>
+              <h3 class="h-4">{it.title}</h3>
+              <p class="amb__text">{it.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .amb__grid {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+  .amb__lead {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+  }
+  .amb__lead :global(.framed) {
+    margin-top: 0.75rem;
+  }
+  .amb__lead :global(img) {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .amb__access {
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+  }
+  .amb__list {
+    display: grid;
+    align-content: start;
+  }
+  .amb__item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding-block: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+  .amb__item:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .amb__item :global(.amb__icon) {
+    width: 1.9rem;
+    height: 1.9rem;
+    color: var(--esparto);
+    margin-top: 0.15rem;
+  }
+  .amb__text {
+    margin-top: 0.3rem;
+    color: var(--fg-muted);
+    max-width: 52ch;
+  }
+  @media (min-width: 64em) {
+    .amb__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
+  }
+</style>

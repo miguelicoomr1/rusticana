@@ -1,0 +1,354 @@
+{
+  "meta": { "siteName": "Restaurant La Rusticana" },
+  "nav": {
+    "home": "Accueil",
+    "main": "Navigation principale",
+    "menu": "Carte",
+    "about": "Qui sommes-nous",
+    "gallery": "Galerie",
+    "reservations": "Réservations",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Politique de cookies",
+    "language": "Langue",
+    "openMenu": "Ouvrir ou fermer le menu"
+  },
+  "cta": {
+    "reserve": "Réserver",
+    "reserveShort": "Réserver",
+    "reserveTable": "Réserver une table",
+    "viewMenu": "Voir la carte",
+    "viewFullMenu": "Voir la carte complète",
+    "call": "Appeler",
+    "directions": "Comment venir",
+    "directionsShort": "Comment venir",
+    "openMaps": "Ouvrir dans Google Maps",
+    "viewReviews": "Voir les avis sur Google",
+    "viewTripadvisor": "Voir sur Tripadvisor",
+    "whatsapp": "WhatsApp",
+    "story": "Notre histoire",
+    "gallery": "Voir la galerie",
+    "contact": "Nous trouver"
+  },
+  "a11y": {
+    "skip": "Aller au contenu",
+    "close": "Fermer",
+    "newWindow": "s'ouvre dans une nouvelle fenêtre"
+  },
+  "langSuggest": { "message": "Cette page est aussi disponible en français" },
+  "mobileBar": { "label": "Actions rapides" },
+  "whatsapp": {
+    "defaultMessage": "Bonjour, je souhaiterais réserver une table à La Rusticana.",
+    "formIntro": "Bonjour, je souhaiterais réserver une table à La Rusticana :"
+  },
+  "seo": {
+    "ogAlt": "Terrasse ombragée du Restaurant La Rusticana à Atamaría, La Manga Club",
+    "schemaDescription": "Restaurant familial à Atamaría, près de La Manga Club (Cartagena, Murcie), ouvert depuis 1986. Cuisine méditerranéenne et internationale, terrasses, aire de jeux pour enfants et parking privé.",
+    "home": {
+      "title": "Restaurant La Rusticana · Atamaría, La Manga Club (Cartagena)",
+      "description": "Restaurant familial depuis 1986 à Atamaría, près de La Manga Club. Cuisine méditerranéenne et internationale, terrasses, aire de jeux, parking privé."
+    },
+    "menu": {
+      "title": "Carte · Restaurant La Rusticana, Atamaría (La Manga Club)",
+      "description": "Carte de La Rusticana : tapas, salades, viandes, poissons, pâtes, paellas et pizzas. Cuisine méditerranéenne à Atamaría, près de La Manga Club."
+    },
+    "about": {
+      "title": "Notre histoire depuis 1986 · Restaurant La Rusticana, Atamaría",
+      "description": "La Rusticana a ouvert en 1986 à Atamaría avec Jens et Reinhilde Dittler. Leur fille Nicole poursuit l'aventure : cuisine méditerranéenne et accueil familial."
+    },
+    "gallery": {
+      "title": "Galerie · Restaurant La Rusticana, Atamaría (La Manga Club)",
+      "description": "Terrasses, salons, plats et ambiance de La Rusticana, le restaurant familial d'Atamaría, près de La Manga Club."
+    },
+    "reservations": {
+      "title": "Réserver une table · Restaurant La Rusticana, Atamaría",
+      "description": "Réservez à La Rusticana (Atamaría, La Manga Club) : appelez le +34 626 91 90 20, écrivez sur WhatsApp ou utilisez le formulaire de demande."
+    },
+    "contact": {
+      "title": "Contact et accès · Restaurant La Rusticana, Atamaría",
+      "description": "Paraje Atamaría 76, 30385 Cartagena. Téléphone, WhatsApp, e-mail, horaires et plan pour venir à La Rusticana, près de La Manga Club."
+    },
+    "legal": {
+      "title": "Mentions légales · Restaurant La Rusticana",
+      "description": "Mentions légales du site web du Restaurant La Rusticana, Atamaría, Cartagena."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité · Restaurant La Rusticana",
+      "description": "Comment le Restaurant La Rusticana traite les données personnelles liées aux réservations et aux contacts."
+    },
+    "cookies": {
+      "title": "Politique de cookies · Restaurant La Rusticana",
+      "description": "Quel stockage et quels cookies le site du Restaurant La Rusticana utilise, et comment les gérer."
+    },
+    "notFound": {
+      "title": "Page introuvable · Restaurant La Rusticana",
+      "description": "La page que vous cherchez n'existe pas ou a changé d'adresse."
+    }
+  },
+  "footer": {
+    "since": "Restaurant familial à Atamaría, près de La Manga Club. Ouvert depuis {year}.",
+    "visit": "Venez nous voir",
+    "explore": "Explorer",
+    "rights": "Tous droits réservés."
+  },
+  "hours": {
+    "title": "Horaires",
+    "closed": "Fermé",
+    "notice": "Horaires indicatifs : ils peuvent varier selon la saison ou les événements. Confirmez par téléphone ou WhatsApp avant de venir."
+  },
+  "consent": {
+    "title": "Votre vie privée",
+    "text": "Nous utilisons uniquement le stockage technique indispensable (langue et ce choix). Avec votre accord, nous pouvons charger des contenus tiers, comme la carte Google. Vous pouvez modifier votre choix à tout moment.",
+    "policy": "Politique de cookies",
+    "manage": "Préférences de cookies",
+    "necessary": "Nécessaires",
+    "necessaryDesc": "Ils mémorisent votre langue et votre choix concernant les cookies. Toujours actifs.",
+    "analytics": "Statistiques",
+    "analyticsDesc": "Statistiques d'utilisation anonymes avec Google Analytics 4.",
+    "maps": "Carte Google",
+    "mapsDesc": "Affiche la carte interactive ; Google peut installer des cookies.",
+    "save": "Enregistrer les préférences",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Refuser les optionnels",
+    "customize": "Personnaliser"
+  },
+  "hero": {
+    "srPrefix": "Restaurant",
+    "lead": "Depuis 1986 au cœur d'Atamaría, près de La Manga Club. Cuisine méditerranéenne et internationale, terrasses et longs repas en famille.",
+    "place": "Atamaría · La Manga Club · Cartagena"
+  },
+  "intro": {
+    "title": "Une maison de famille à Atamaría, ouverte depuis 1986",
+    "p1": "En 1986, Jens et Reinhilde Dittler ont ouvert La Rusticana avec l'idée de proposer une cuisine méditerranéenne à Atamaría. Aujourd'hui, leur fille Nicole dirige la maison.",
+    "p2": "Des terrasses quand il fait beau, des salons avec cheminée quand il fait plus frais, une aire de jeux pour enfants et un parking privé : un endroit pour déjeuner, dîner et prendre son temps.",
+    "since": "Depuis 1986",
+    "family": "Entreprise familiale",
+    "place": "Atamaría"
+  },
+  "dishes": {
+    "title": "De la carte",
+    "lead": "Quelques plats que l'on retrouve souvent sur les tables et dans les avis. La carte complète, avec tous les prix, se trouve juste à côté.",
+    "priceNote": "Prix selon la carte publiée par le restaurant."
+  },
+  "ambience": {
+    "title": "Un lieu à savourer toute l'année",
+    "lead": "La salle change avec le temps : en plein air quand c'est possible, près de la cheminée quand il le faut.",
+    "items": [
+      { "title": "Terrasses", "text": "De grandes terrasses en plein air pour les après-midis et les soirées de beau temps.", "icon": "sun" },
+      { "title": "Salons avec cheminée", "text": "Quand il fait plus frais, des salles intérieures chaleureuses et accueillantes.", "icon": "flame" },
+      { "title": "Pour les enfants", "text": "Aire de jeux extérieure et espace de jeux intérieur pour les jours de pluie. Menu enfant et chaises hautes.", "icon": "trees" },
+      { "title": "Parking privé", "text": "Parking gratuit directement au restaurant.", "icon": "car" },
+      { "title": "Musique et soirées spéciales", "text": "Au fil de l'année, le restaurant organise de la musique live, des fêtes à thème et des soirées spéciales. Suivez-nous sur les réseaux sociaux pour connaître les dates.", "icon": "music" },
+      { "title": "Fêtes et groupes", "text": "Anniversaires, noces, communions, mariages, dîners d'entreprise et réunions de famille, avec des menus pour groupes et des propositions sur mesure.", "icon": "utensils" }
+    ],
+    "access": "Accès, parking et toilettes adaptés aux fauteuils roulants."
+  },
+  "reviews": {
+    "title": "Ce que disent ceux qui nous rendent visite",
+    "summary": "{googleRating} sur 5 sur Google ({googleCount} avis) et {taRating} sur 5 sur Tripadvisor ({taCount} avis). Données consultées en septembre 2026.",
+    "themesTitle": "Ce qui revient le plus dans les avis",
+    "themes": [
+      "Un accueil chaleureux et familial de l'équipe",
+      "Terrasse et ambiance conviviale",
+      "Croquetas et paellas",
+      "Musique live",
+      "Aire de jeux pour les enfants",
+      "Parking facile et gratuit"
+    ],
+    "sources": "Synthèse personnelle à partir d'avis publics. Nous ne reproduisons pas les commentaires : vous pouvez les lire en entier sur chaque plateforme."
+  },
+  "location": {
+    "title": "Comment venir",
+    "lead": "Nous sommes au Paraje Atamaría, près de La Manga Club, sur la commune de Cartagena (Los Belones), dans la région de Murcie. Le parking privé est gratuit.",
+    "mapTitle": "Plan de localisation de La Rusticana",
+    "loadMap": "Charger la carte interactive",
+    "mapConsent": "En chargeant la carte, Google peut installer des cookies sur votre appareil.",
+    "coordinates": "Coordonnées GPS"
+  },
+  "band": {
+    "title": "Réservez votre table",
+    "text": "Appelez-nous, écrivez-nous sur WhatsApp ou envoyez une demande. Il est recommandé de réserver. La réservation est confirmée lorsque le restaurant vous répond."
+  },
+  "menuPage": {
+    "title": "Carte",
+    "intro": "Cuisine méditerranéenne aux touches internationales : tapas à partager, salades, viandes, poissons, pâtes, paellas et pizzas.",
+    "categoriesLabel": "Catégories de la carte",
+    "filtersLabel": "Filtres",
+    "filterAll": "Toute la carte",
+    "allergenTitle": "Allergies et intolérances",
+    "allergenText": "Cette carte numérique ne contient pas d'informations sur les allergènes. Si vous avez une allergie ou une intolérance, signalez-le à l'équipe avant de commander.",
+    "updated": "Carte retranscrite en septembre 2026 à partir de celle publiée par le restaurant. Les prix et les plats peuvent changer.",
+    "pricesHint": "Prix en euros.",
+    "perUnit": "l'unité",
+    "askStaff": "Nous consulter",
+    "pending": "Prix à confirmer auprès du restaurant",
+    "tags": { "vegetarian": "Végétarien", "vegan": "Végétalien", "glutenFree": "Sans gluten" },
+    "noResults": "Aucun plat dans cette catégorie.",
+    "downloadNote": "Vous préférez la consulter sur papier ? Demandez-la au restaurant."
+  },
+  "aboutPage": {
+    "title": "Quarante ans, une même maison",
+    "lead": "La Rusticana n'est pas née pour les touristes : depuis quarante ans, elle est à Atamaría, avec la même famille derrière.",
+    "s1": {
+      "title": "1986 : l'ouverture",
+      "text": "En 1986, un couple allemand, Jens et Reinhilde Dittler, a ouvert La Rusticana dans la sierra d'Atamaría, près de Los Belones. Ils voulaient proposer une cuisine méditerranéenne dans la région, avec des produits de qualité et des touches internationales."
+    },
+    "s2": {
+      "title": "Nicole reprend les rênes",
+      "text": "Leur fille Nicole a repris l'établissement et dirige aujourd'hui la maison. Le caractère familial se ressent : c'est un restaurant où beaucoup de clients reviennent et où l'accueil reste chaleureux."
+    },
+    "s3": {
+      "title": "Atamaría et La Manga Club",
+      "text": "Le restaurant se trouve au Paraje Atamaría, près de La Manga Club. Aux tables se mêlent des habitants de Cartagena et des environs, des résidents et des visiteurs du resort venus de différents pays, accueillis dans la même maison depuis des décennies."
+    },
+    "s4": {
+      "title": "La cuisine",
+      "text": "Cuisine méditerranéenne aux influences internationales : tapas et croquetas maison, riz et paellas, viandes, poissons et pâtes, ainsi que des plats de la tradition d'Europe centrale comme le schnitzel ou le filet de bœuf Stroganoff."
+    },
+    "timelineTitle": "En quelques dates",
+    "timeline": [
+      { "year": "1986", "text": "Jens et Reinhilde Dittler ouvrent La Rusticana à Atamaría." },
+      { "year": "2023", "text": "L'émission El Rompeolas d'ORM consacre un épisode à La Rusticana dans ses « Rutas gastronómicas por la Trimilenaria »." },
+      { "year": "2026", "text": "Quarante ans plus tard, la maison est toujours ouverte et aux mains de la famille." }
+    ],
+    "press": "Voir l'épisode sur ORM",
+    "cta": "Venez nous rencontrer"
+  },
+  "galleryPage": {
+    "title": "Galerie",
+    "lead": "Terrasses, salons, plats et recoins de la maison.",
+    "filterLabel": "Filtrer par catégorie",
+    "all": "Tout",
+    "categories": {
+      "restaurant": "Restaurant",
+      "terrace": "Terrasse",
+      "food": "Gastronomie",
+      "interior": "Intérieur",
+      "events": "Événements",
+      "family": "Famille",
+      "surroundings": "Atamaría et alentours"
+    },
+    "pendingTitle": "Photo à venir",
+    "pendingHint": "Elle sera remplacée par une véritable photographie du restaurant.",
+    "lightbox": { "close": "Fermer l'image", "prev": "Image précédente", "next": "Image suivante", "label": "Visionneuse d'images", "counter": "Image {n} sur {total}" },
+    "note": "Photographies du restaurant. Les cases signalées comme à venir attendent de vraies photographies que fournira le restaurant."
+  },
+  "reservationsPage": {
+    "title": "Réserver une table",
+    "lead": "Choisissez le moyen de réservation qui vous convient. Il est recommandé de réserver ; la table est confirmée lorsque le restaurant vous répond.",
+    "callTitle": "Par téléphone",
+    "callText": "Le moyen le plus rapide : appelez-nous pendant les heures d'ouverture.",
+    "waTitle": "Par WhatsApp",
+    "waText": "Nous ouvrons la conversation avec un message déjà préparé.",
+    "formTitle": "Demande de réservation",
+    "formLead": "Remplissez les informations et envoyez la demande. Il ne s'agit pas d'une confirmation automatique.",
+    "fields": {
+      "name": "Nom",
+      "phone": "Téléphone",
+      "email": "E-mail (facultatif)",
+      "date": "Date",
+      "time": "Heure",
+      "guests": "Personnes",
+      "area": "Emplacement souhaité",
+      "notes": "Remarques",
+      "allergies": "Allergies ou intolérances",
+      "consent": "J'ai lu la politique de confidentialité et j'accepte que mes données soient traitées pour gérer cette réservation."
+    },
+    "areas": { "none": "Sans préférence", "terrace": "Terrasse", "indoor": "Intérieur" },
+    "guestsMore": "Plus de {n} personnes : appelez-nous",
+    "placeholders": { "notes": "Anniversaire, chaise haute, poussette…", "allergies": "Indiquez vos allergies ou intolérances" },
+    "submitWhatsapp": "Envoyer la demande par WhatsApp",
+    "submitEmail": "Envoyer par e-mail",
+    "submit": "Envoyer la demande",
+    "sending": "Envoi en cours…",
+    "sentTitle": "Demande envoyée",
+    "sentText": "Nous avons bien reçu votre demande. La réservation est confirmée lorsque le restaurant vous répond.",
+    "opened": "Nous avons ouvert WhatsApp avec votre demande. Appuyez sur envoyer pour qu'elle parvienne au restaurant.",
+    "openedEmail": "Nous avons ouvert votre application de messagerie avec la demande préparée. Envoyez-la depuis celle-ci pour qu'elle parvienne au restaurant.",
+    "errorGeneric": "Nous n'avons pas pu envoyer la demande. Veuillez réessayer ou nous appeler.",
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "phone": "Saisissez un numéro de téléphone valide, avec l'indicatif s'il s'agit d'un autre pays.",
+      "email": "Saisissez une adresse e-mail valide.",
+      "date": "Choisissez une date à partir d'aujourd'hui.",
+      "guests": "Indiquez entre 1 et {n} personnes.",
+      "consent": "Vous devez accepter la politique de confidentialité."
+    },
+    "closedDay": "Ce jour-là, le restaurant est généralement fermé. Vous pouvez tout de même envoyer la demande et nous vous répondrons.",
+    "summaryTitle": "Récapitulatif de votre demande",
+    "wait": "Délai de réponse : il dépend du service ; pour le jour même, appelez par téléphone."
+  },
+  "contactPage": {
+    "title": "Contact",
+    "lead": "Tout ce dont vous avez besoin pour venir et nous joindre.",
+    "addressTitle": "Adresse",
+    "phoneTitle": "Téléphone et WhatsApp",
+    "emailTitle": "E-mail",
+    "hoursTitle": "Horaires",
+    "socialTitle": "Réseaux sociaux",
+    "mapTitle": "Plan",
+    "areaNote": "Atamaría · La Manga Club · Cartagena · Région de Murcie"
+  },
+  "notFound": {
+    "title": "Nous ne trouvons pas cette page",
+    "text": "L'adresse a peut-être changé ou contient une erreur de saisie.",
+    "home": "Aller à l'accueil",
+    "menu": "Voir la carte"
+  },
+  "legalNotice": {
+    "pendingBanner": "Ce texte doit encore être complété par le titulaire du restaurant : la raison sociale et le NIF/CIF vérifiés font défaut. Aucune donnée fiscale n'est publiée sans avoir été confirmée.",
+    "updated": "Dernière mise à jour : septembre 2026.",
+    "holderTitle": "1. Données d'identification",
+    "holder": "Conformément à l'article 10 de la Ley 34/2002 sur les services de la société de l'information et le commerce électronique (LSSI-CE), il est précisé que ce site web est exploité par :",
+    "labels": { "trade": "Nom commercial", "holder": "Titulaire", "vat": "NIF/CIF", "address": "Adresse", "email": "E-mail", "phone": "Téléphone", "pendingValue": "À confirmer par le titulaire" },
+    "sections": [
+      { "title": "2. Objet et conditions d'utilisation", "text": "Ce site web fournit des informations sur le restaurant (carte, horaires, localisation et réservations). Son utilisation est gratuite et confère la qualité d'utilisateur, qui s'engage à l'utiliser conformément à la loi, à la bonne foi et à l'ordre public." },
+      { "title": "3. Propriété intellectuelle et industrielle", "text": "Les textes, le design, le code et les photographies du site appartiennent au titulaire ou sont utilisés avec autorisation. Leur reproduction ou leur diffusion sans autorisation est interdite. Le nom « La Rusticana » et les autres signes distinctifs appartiennent à leurs titulaires." },
+      { "title": "4. Informations indicatives", "text": "La carte, les prix, les horaires et les événements sont publiés de bonne foi et peuvent changer sans préavis. Avant de venir, surtout en groupe ou en cas d'allergies, confirmez les informations par téléphone ou WhatsApp." },
+      { "title": "5. Liens vers des tiers", "text": "Le site renvoie vers des services tiers (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). Le titulaire n'est responsable ni de leurs contenus ni de leurs politiques de confidentialité." },
+      { "title": "6. Législation applicable et juridiction", "text": "Les présentes mentions sont régies par la législation espagnole. Pour tout litige avec des consommateurs, les juridictions de leur domicile seront compétentes, conformément à la réglementation applicable." }
+    ]
+  },
+  "privacyPolicy": {
+    "updated": "Dernière mise à jour : septembre 2026.",
+    "intro": "Cette politique explique comment sont traitées les données personnelles que vous nous communiquez lors d'une réservation ou d'un contact, conformément au Règlement (UE) 2016/679 (RGPD) et à la Ley Orgánica 3/2018 (LOPDGDD).",
+    "sections": [
+      { "title": "1. Responsable du traitement", "text": "Restaurante La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcie). E-mail : larusticanarestaurant@outlook.es · Téléphone : +34 626 91 90 20. Raison sociale et NIF/CIF : à confirmer par le titulaire." },
+      { "title": "2. Quelles données nous traitons et pourquoi", "text": "Nom, téléphone, e-mail (facultatif), date, heure, nombre de convives, emplacement souhaité, remarques et allergies que vous indiquez, dans le seul but de gérer votre demande de réservation et de vous répondre. Si vous nous contactez par téléphone, WhatsApp ou e-mail, nous traitons les données que vous nous communiquez pour répondre à votre demande." },
+      { "title": "3. Base juridique", "text": "Votre consentement (art. 6.1.a RGPD) lors de l'envoi du formulaire et l'application de mesures précontractuelles prises à votre demande (art. 6.1.b). Si vous indiquez des allergies ou des intolérances, ces données peuvent être des données de santé ; nous les traitons uniquement pour adapter le service, avec votre consentement explicite lors de leur envoi." },
+      { "title": "4. Comment circulent vos données", "text": "Ce site n'enregistre pas les demandes sur un serveur propre. Lors de l'envoi du formulaire, WhatsApp ou votre application de messagerie s'ouvre avec le message préparé ou, si le restaurant active un système de réservation, la demande est envoyée à ce système. Pour WhatsApp, Meta Platforms Ireland Ltd. intervient et, pour l'e-mail, le fournisseur du restaurant (Microsoft Outlook)." },
+      { "title": "5. Conservation", "text": "Nous conservons les données le temps nécessaire pour gérer la réservation puis, pendant les délais légaux, en vue d'éventuelles responsabilités. Aucun profilage n'est réalisé et aucune décision automatisée n'est prise." },
+      { "title": "6. Destinataires", "text": "Nous ne cédons pas vos données à des tiers, sauf obligation légale. Les prestataires cités agissent comme sous-traitants ou comme responsables de traitement de leurs propres services, selon leurs conditions. Si vous chargez la carte Google, Google reçoit des données techniques de votre navigateur." },
+      { "title": "7. Vos droits", "text": "Vous pouvez exercer vos droits d'accès, de rectification, d'effacement, d'opposition, de limitation et de portabilité en écrivant à larusticanarestaurant@outlook.es, avec une copie de votre pièce d'identité si nécessaire. Si vous estimez qu'ils n'ont pas été respectés, vous pouvez introduire une réclamation auprès de l'Agencia Española de Protección de Datos (AEPD, www.aepd.es)." },
+      { "title": "8. Mineurs", "text": "Les réservations doivent être faites par des personnes de plus de 14 ans ; pour les moins de 14 ans, le consentement relève de leurs parents ou tuteurs." }
+    ]
+  },
+  "cookiePolicy": {
+    "updated": "Dernière mise à jour : septembre 2026.",
+    "intro": "Ce site utilise le stockage du navigateur (localStorage) et, uniquement avec votre accord, des cookies tiers. Nous ne chargeons aucun élément optionnel avant que vous l'ayez accepté.",
+    "tableTitle": "Ce que nous utilisons",
+    "headers": { "name": "Nom / service", "purpose": "Finalité", "type": "Type", "duration": "Durée" },
+    "rows": [
+      { "name": "rusticana-lang", "purpose": "Mémoriser la langue que vous avez choisie.", "type": "Technique (propre)", "duration": "Jusqu'à ce que vous l'effaciez" },
+      { "name": "rusticana-consent", "purpose": "Mémoriser votre choix concernant les cookies.", "type": "Technique (propre)", "duration": "Jusqu'à ce que vous l'effaciez" },
+      { "name": "Google Maps (carte intégrée)", "purpose": "Afficher la carte interactive. Uniquement si vous acceptez ou cliquez sur « Charger la carte ».", "type": "Tiers (Google)", "duration": "Selon Google" },
+      { "name": "Google Analytics 4", "purpose": "Statistiques d'utilisation anonymes. Uniquement si le site l'a activé et si vous l'acceptez.", "type": "Statistiques (Google)", "duration": "Jusqu'à 2 ans" }
+    ],
+    "manageTitle": "Comment modifier votre choix",
+    "manageText": "Cliquez sur « Préférences de cookies » en bas de page pour modifier vos options à tout moment. Vous pouvez aussi effacer les données du site depuis votre navigateur.",
+    "manageButton": "Ouvrir les préférences",
+    "moreTitle": "Pour en savoir plus",
+    "moreText": "Consultez la politique de confidentialité pour savoir comment vos données personnelles sont traitées."
+  },
+  "photos": {
+    "terraceEvening": "Terrasse de La Rusticana au crépuscule, avec parasols, tables hautes en tonneau et lanternes allumées",
+    "terraceDay": "Terrasse ombragée de La Rusticana avec parasols blancs, palmiers et pelouse",
+    "diningRoom": "Salle intérieure de La Rusticana avec poutres en bois, sol en terre cuite et tables dressées",
+    "playground": "Aire de jeux extérieure de La Rusticana avec un toboggan jaune entouré de végétation",
+    "dishSquid": "Assiette de calamar aux crevettes, sauce verte et citron",
+    "dishPaella": "Paella servie dans sa paellera avec du citron",
+    "dishSalad": "Salade tropicale au poulet croustillant et sauce crémeuse",
+    "dishScallops": "Zamburiñas servies dans leur coquille avec de l'orange"
+  }
+}

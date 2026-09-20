@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Gallery from '../components/Gallery.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { breadcrumbJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="gallery"
+  title={t(locale, 'seo.gallery.title')}
+  description={t(locale, 'seo.gallery.description')}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: t(locale, 'nav.gallery'), path: pathFor(locale, 'gallery') },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey="gallery" title={t(locale, 'galleryPage.title')} lead={t(locale, 'galleryPage.lead')} />
+  <Gallery locale={locale} />
+  <ReservationCTA locale={locale} />
+</BaseLayout>

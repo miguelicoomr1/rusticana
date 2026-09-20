@@ -1,0 +1,34 @@
+---
+import DishCard from './DishCard.astro';
+import { localized, type MenuItem, type MenuCategory } from '../lib/menu.ts';
+import { type Locale } from '../i18n/index.ts';
+interface Props {
+  category: MenuCategory & { items: MenuItem[] };
+  locale: Locale;
+}
+const { category, locale } = Astro.props;
+---
+
+<section class="mcat" id={`cat-${category.id}`} aria-labelledby={`h-${category.id}`} data-cat-section>
+  <h2 id={`h-${category.id}`} class="h-3 mcat__title">{localized(category.name, locale)}</h2>
+  <div class="plait plait--thin mcat__band" aria-hidden="true"></div>
+  <ul role="list" class="mcat__list">
+    {category.items.map((item) => <DishCard item={item} locale={locale} />)}
+  </ul>
+</section>
+
+<style>
+  .mcat {
+    padding-top: clamp(2rem, 4vw, 3rem);
+    break-inside: avoid-column;
+  }
+  .mcat__title {
+    padding-bottom: 0.9rem;
+  }
+  .mcat__band {
+    margin-bottom: 0.25rem;
+  }
+  .mcat__list {
+    display: grid;
+  }
+</style>

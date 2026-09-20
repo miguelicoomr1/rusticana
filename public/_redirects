@@ -1,0 +1,10 @@
+# Netlify / Cloudflare Pages. La raíz (/) es la página de detección de idioma.
+/es          /es/          301
+/en          /en/          301
+/de          /de/          301
+/fr          /fr/          301
+/nl          /nl/          301
+/menu        /es/carta/    301
+/carta       /es/carta/    301
+/contacto    /es/contacto/ 301
+/reservas    /es/reservas/ 301

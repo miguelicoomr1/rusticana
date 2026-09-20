@@ -1,0 +1,71 @@
+---
+import { restaurant } from '../config/restaurant.config.ts';
+import { scheduleRows } from '../lib/hours.ts';
+import { t, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+  /** Muestra el aviso "confirma por teléfono" cuando el horario no está verificado. */
+  showNotice?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { locale, showNotice = true, headingLevel = 'h3' } = Astro.props;
+const rows = scheduleRows(locale, t(locale, 'hours.closed'));
+const Heading = headingLevel;
+const unverified = restaurant.hours.status !== 'confirmed';
+---
+
+<section class="hours" aria-labelledby="hours-title">
+  <Heading id="hours-title" class="h-4 hours__title">{t(locale, 'hours.title')}</Heading>
+  {showNotice && unverified && <p class="hours__note">{t(locale, 'hours.notice')}</p>}
+  <table class="hours__table tabular">
+    <caption class="sr-only">{t(locale, 'hours.title')}</caption>
+    <tbody>
+      {
+        rows.map((r) => (
+          <tr class:list={{ 'is-closed': r.closed }}>
+            <th scope="row">{r.name}</th>
+            <td>{r.text}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</section>
+
+<style>
+  .hours__title {
+    margin-bottom: 0.75rem;
+  }
+  .hours__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .hours__table th,
+  .hours__table td {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    font-weight: 450;
+    font-size: var(--fs-sm);
+  }
+  .hours__table th {
+    font-weight: 650;
+    padding-right: 1rem;
+  }
+  .hours__table td {
+    text-align: right;
+  }
+  .hours__table .is-closed td {
+    color: var(--fg-muted);
+  }
+  .hours__note {
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--straw-deep);
+    border: 1px solid var(--straw-line);
+    border-radius: 2px;
+    font-size: var(--fs-sm);
+    font-weight: 550;
+    max-width: 46ch;
+  }
+</style>

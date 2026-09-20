@@ -1,0 +1,70 @@
+---
+import Icon from './Icon.astro';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { telHref } from '../lib/contact.ts';
+import { restaurant } from '../config/restaurant.config.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<nav class="mobile-bar on-olive" aria-label={t(locale, 'mobileBar.label')}>
+  <a href={telHref} data-track="call">
+    <Icon name="phone" />
+    <span>{t(locale, 'cta.call')}</span>
+  </a>
+  <a href={pathFor(locale, 'reservations')} class="mobile-bar__primary" data-track="reserve">
+    <Icon name="calendar" />
+    <span>{t(locale, 'cta.reserveShort')}</span>
+  </a>
+  <a href={restaurant.maps.directionsUrl} target="_blank" rel="noopener" data-track="directions">
+    <Icon name="route" />
+    <span>{t(locale, 'cta.directionsShort')}</span>
+  </a>
+</nav>
+
+<style>
+  .mobile-bar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 45;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid var(--olive-900);
+    background: var(--olive-800);
+  }
+  .mobile-bar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    min-height: 3.5rem;
+    padding: 0.4rem 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .mobile-bar a + a {
+    border-left: 1px solid var(--rule);
+  }
+  .mobile-bar svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+  .mobile-bar__primary {
+    background: var(--terracotta);
+    color: #fff9ee;
+  }
+  @media (min-width: 64em) {
+    .mobile-bar {
+      display: none;
+    }
+  }
+</style>

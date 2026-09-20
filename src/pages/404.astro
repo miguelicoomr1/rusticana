@@ -1,0 +1,135 @@
+---
+/** 404 multilingüe: muestra el idioma de la ruta solicitada / preferencia guardada / navegador. */
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { LOCALES, LOCALE_META, DEFAULT_LOCALE, pathFor, t } from '../i18n/index.ts';
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t(DEFAULT_LOCALE, 'seo.notFound.title')}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline define:vars={{ locales: LOCALES, fallback: DEFAULT_LOCALE }}>
+      document.documentElement.classList.add('js');
+      (function () {
+        let pick = fallback;
+        try {
+          const seg = location.pathname.split('/').filter(Boolean)[0];
+          const saved = localStorage.getItem('rusticana-lang');
+          if (seg && locales.indexOf(seg) > -1) pick = seg;
+          else if (saved && locales.indexOf(saved) > -1) pick = saved;
+          else {
+            const langs = navigator.languages || [navigator.language];
+            for (let i = 0; i < langs.length; i++) {
+              const l = String(langs[i]).slice(0, 2).toLowerCase();
+              if (locales.indexOf(l) > -1) {
+                pick = l;
+                break;
+              }
+            }
+          }
+        } catch {
+          /* almacenamiento bloqueado */
+        }
+        document.documentElement.setAttribute('data-pick', pick);
+      })();
+    </script>
+  </head>
+  <body class="on-olive nf">
+    <a href={pathFor(DEFAULT_LOCALE, 'home')} class="nf__logo" aria-label="La Rusticana"><Logo /></a>
+    <main id="contenido" class="nf__main">
+      {
+        LOCALES.map((l) => (
+          <section class="nf__block" data-lang-block={l} lang={LOCALE_META[l].hreflang}>
+            <p class="nf__code" aria-hidden="true">
+              404
+            </p>
+            <h1 class="h-1">{t(l, 'notFound.title')}</h1>
+            <p class="lede">{t(l, 'notFound.text')}</p>
+            <p class="nf__cta">
+              <a class="btn" href={pathFor(l, 'home')}>
+                {t(l, 'notFound.home')}
+              </a>
+              <a class="btn btn--ghost" style="--btn-fg:var(--straw)" href={pathFor(l, 'menu')}>
+                {t(l, 'notFound.menu')}
+              </a>
+            </p>
+          </section>
+        ))
+      }
+      <ul class="nf__langs" role="list">
+        {
+          LOCALES.map((l) => (
+            <li>
+              <a href={pathFor(l, 'home')} hreflang={LOCALE_META[l].hreflang} lang={LOCALE_META[l].hreflang}>
+                {LOCALE_META[l].nativeName}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <div class="plait plait--dark" aria-hidden="true"></div>
+  </body>
+</html>
+
+<style is:global>
+  .nf {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .nf__logo {
+    padding: 1.25rem var(--gutter);
+    text-decoration: none;
+    justify-self: start;
+  }
+  .nf__main {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 2rem;
+    padding: 2rem var(--gutter) 4rem;
+    width: min(100%, 60rem);
+    margin-inline: auto;
+  }
+  .nf__block {
+    display: none;
+    gap: 1rem;
+  }
+  html:not([data-pick]) .nf__block[data-lang-block='es'],
+  html[data-pick='es'] .nf__block[data-lang-block='es'],
+  html[data-pick='en'] .nf__block[data-lang-block='en'],
+  html[data-pick='de'] .nf__block[data-lang-block='de'],
+  html[data-pick='fr'] .nf__block[data-lang-block='fr'],
+  html[data-pick='nl'] .nf__block[data-lang-block='nl'] {
+    display: grid;
+  }
+  .nf__code {
+    font-family: var(--font-display);
+    font-size: var(--fs-display);
+    color: var(--esparto);
+    line-height: 1;
+  }
+  .nf__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .nf__langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: var(--fs-sm);
+  }
+  .nf__langs a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+</style>

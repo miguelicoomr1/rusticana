@@ -1,0 +1,153 @@
+---
+import Photo from './Photo.astro';
+import { categories, featured, formatPrice, localized } from '../lib/menu.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+type Dish = (typeof featured)[number];
+const withPhoto = featured.filter((i) => i.photo);
+const others = featured.filter((i) => !i.photo);
+const catName = (i: Dish) => localized(categories.find((c) => c.id === i.category)?.name, locale);
+const label = (i: Dish) => (locale === 'es' ? '' : localized(i.tr, locale));
+const priceOf = (i: Dish) => i.priceText ?? (i.price != null ? formatPrice(i.price, locale) : '');
+---
+
+<section class="dishes section" aria-labelledby="dishes-title">
+  <div class="wrap">
+    <header class="dishes__head reveal">
+      <h2 id="dishes-title" class="h-2">{t(locale, 'dishes.title')}</h2>
+      <p class="lede muted measure">{t(locale, 'dishes.lead')}</p>
+    </header>
+
+    <ul class="dishes__list" role="list">
+      {
+        withPhoto.map((d, i) => (
+          <li class="dish reveal" style={`--reveal-delay: ${(i % 2) * 0.1}s`}>
+            <Photo photo={d.photo!} locale={locale} framed sizes="(min-width: 48em) 44vw, 92vw" widths={[480, 768, 1024]} />
+            <div class="dish__text">
+              <p class="paper-tag">{catName(d)}</p>
+              <h3 class="h-3">{d.name}</h3>
+              {label(d) && <p class="dish__tr">{label(d)}</p>}
+              {localized(d.desc, locale) && <p class="muted">{localized(d.desc, locale)}</p>}
+              <p class="dish__price tabular">{priceOf(d) || <span class="dish__ask">{t(locale, 'menuPage.askStaff')}</span>}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      others.length > 0 && (
+        <ul class="dishes__more reveal" role="list">
+          {others.map((d) => (
+            <li>
+              <span class="dishes__name">
+                {d.name}
+                {label(d) && <span class="dish__tr"> · {label(d)}</span>}
+              </span>
+              <span class="dishes__dots" aria-hidden="true" />
+              {priceOf(d) && <span class="tabular dishes__pr">{priceOf(d)}{d.unit ? ` / ${t(locale, 'menuPage.perUnit')}` : ''}</span>}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <p class="dishes__cta reveal">
+      <a class="btn btn--olive" href={pathFor(locale, 'menu')}>{t(locale, 'cta.viewFullMenu')}</a>
+      <span class="muted dishes__note">{t(locale, 'dishes.priceNote')}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .dishes__head {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+  .dishes__list {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 40em) {
+    .dishes__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .dish {
+    display: grid;
+    gap: 1.1rem;
+    align-content: start;
+  }
+  .dish :global(img) {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.9s var(--ease-out);
+  }
+  .dish :global(.framed) {
+    overflow: hidden;
+  }
+  .dish:hover :global(img) {
+    transform: scale(1.03);
+  }
+  .dish__text {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+  }
+  .dish__tr {
+    color: var(--fg-muted);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: var(--fs-1);
+  }
+  .dish__price {
+    margin-top: 0.2rem;
+    font-weight: 700;
+    font-size: var(--fs-1);
+    color: var(--terracotta-deep);
+  }
+  .dish__ask {
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    color: var(--fg-muted);
+  }
+  .dishes__more {
+    display: grid;
+    gap: 0.4rem;
+    max-width: 44rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .dishes__more li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .dishes__name {
+    font-weight: 600;
+  }
+  .dishes__dots {
+    flex: 1;
+    min-width: 1rem;
+    border-bottom: 2px dotted var(--rule);
+    transform: translateY(-0.3em);
+  }
+  .dishes__pr {
+    font-weight: 700;
+  }
+  .dishes__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .dishes__note {
+    font-size: var(--fs-sm);
+  }
+</style>

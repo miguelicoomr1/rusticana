@@ -1,0 +1,63 @@
+---
+import Icon from './Icon.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { telHref, whatsappHref } from '../lib/contact.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<section class="band on-olive" aria-labelledby="band-title">
+  <div class="plait plait--dark" aria-hidden="true"></div>
+  <div class="wrap band__inner">
+    <div class="band__copy reveal">
+      <h2 id="band-title" class="h-1">{t(locale, 'band.title')}</h2>
+      <p class="lede">{t(locale, 'band.text')}</p>
+    </div>
+    <div class="band__actions reveal" style="--reveal-delay: 0.1s">
+      <a class="btn" href={pathFor(locale, 'reservations')}><Icon name="calendar" />{t(locale, 'cta.reserveTable')}</a>
+      <a class="btn btn--ghost" href={telHref}><Icon name="phone" />{restaurant.phone.display}</a>
+      <a class="btn btn--ghost" href={whatsappHref(locale)} target="_blank" rel="noopener"><Icon name="whatsapp" />{t(locale, 'cta.whatsapp')}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band__inner {
+    display: grid;
+    gap: 2rem;
+    padding-block: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+    align-items: center;
+  }
+  .band__copy {
+    display: grid;
+    gap: 1rem;
+    max-width: 40rem;
+  }
+  .band__actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.75rem;
+  }
+  .band .btn--ghost {
+    --btn-fg: var(--straw);
+  }
+  .band .btn--ghost:hover {
+    --btn-bg: var(--straw);
+    --btn-fg: var(--olive-900);
+    --btn-bd: var(--straw);
+  }
+  @media (min-width: 64em) {
+    .band__inner {
+      grid-template-columns: 1.1fr 1fr;
+    }
+    .band__actions {
+      grid-template-columns: 1fr;
+      max-width: 22rem;
+      justify-self: end;
+      width: 100%;
+    }
+  }
+</style>

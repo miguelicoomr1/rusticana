@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import LocationMap from '../components/LocationMap.astro';
+import Icon from '../components/Icon.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { telHref, mailHref, whatsappHref } from '../lib/contact.ts';
+import { t, pathFor, type Locale } from '../i18n/index.ts';
+import { breadcrumbJsonLd, restaurantJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const social = [
+  { name: 'Instagram', icon: 'instagram' as const, url: restaurant.social.instagram.url, ok: restaurant.social.instagram.status === 'confirmed' },
+  { name: 'Facebook', icon: 'facebook' as const, url: restaurant.social.facebook.url, ok: restaurant.social.facebook.status === 'confirmed' },
+  { name: 'Tripadvisor', icon: 'tripadvisor' as const, url: restaurant.social.tripadvisor.url, ok: restaurant.social.tripadvisor.status === 'confirmed' },
+].filter((s) => s.ok);
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="contact"
+  title={t(locale, 'seo.contact.title')}
+  description={t(locale, 'seo.contact.description')}
+  jsonLd={[
+    restaurantJsonLd(locale),
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: t(locale, 'nav.contact'), path: pathFor(locale, 'contact') },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey="contact" title={t(locale, 'contactPage.title')} lead={t(locale, 'contactPage.lead')} />
+
+  <section class="section--tight" aria-label={t(locale, 'contactPage.title')}>
+    <div class="wrap">
+      <ul class="ways" role="list">
+        <li>
+          <Icon name="phone" />
+          <div>
+            <h2 class="h-4">{t(locale, 'contactPage.phoneTitle')}</h2>
+            <p><a class="text-link" href={telHref}>{restaurant.phone.display}</a></p>
+            <p><a class="text-link" href={whatsappHref(locale)} target="_blank" rel="noopener">WhatsApp<span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span></a></p>
+          </div>
+        </li>
+        <li>
+          <Icon name="mail" />
+          <div>
+            <h2 class="h-4">{t(locale, 'contactPage.emailTitle')}</h2>
+            <p><a class="text-link" href={mailHref}>{restaurant.email.address}</a></p>
+          </div>
+        </li>
+        <li>
+          <Icon name="pin" />
+          <div>
+            <h2 class="h-4">{t(locale, 'contactPage.addressTitle')}</h2>
+            <address>
+              {restaurant.displayName}<br />
+              {restaurant.address.streetAddress}<br />
+              {restaurant.address.postalCode} {restaurant.address.addressLocality}<br />
+              {restaurant.address.addressRegion}
+            </address>
+          </div>
+        </li>
+        {
+          social.length > 0 && (
+            <li>
+              <Icon name={social[0].icon} />
+              <div>
+                <h2 class="h-4">{t(locale, 'contactPage.socialTitle')}</h2>
+                <p class="social">
+                  {social.map((s) => (
+                    <a class="text-link" href={s.url} target="_blank" rel="noopener me">
+                      {s.name}<span class="sr-only"> ({t(locale, 'a11y.newWindow')})</span>
+                    </a>
+                  ))}
+                </p>
+              </div>
+            </li>
+          )
+        }
+      </ul>
+    </div>
+  </section>
+
+  <div class="plait" aria-hidden="true"></div>
+  <LocationMap locale={locale} showTitle={false} showCoords />
+</BaseLayout>
+
+<style>
+  .ways {
+    display: grid;
+    gap: 0;
+  }
+  .ways li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding-block: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+  .ways li:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .ways :global(svg) {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--olive-600);
+    margin-top: 0.2rem;
+  }
+  .ways p {
+    margin-top: 0.3rem;
+    overflow-wrap: anywhere;
+  }
+  .social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  @media (min-width: 48em) {
+    .ways {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+    }
+    .ways li:nth-last-child(2) {
+      border-bottom: 1px solid var(--rule);
+    }
+  }
+</style>

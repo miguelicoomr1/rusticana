@@ -1,0 +1,354 @@
+{
+  "meta": { "siteName": "Restaurant La Rusticana" },
+  "nav": {
+    "home": "Home",
+    "main": "Hoofdnavigatie",
+    "menu": "Menukaart",
+    "about": "Over ons",
+    "gallery": "Galerij",
+    "reservations": "Reserveren",
+    "contact": "Contact",
+    "legal": "Juridische informatie",
+    "privacy": "Privacybeleid",
+    "cookies": "Cookiebeleid",
+    "language": "Taal",
+    "openMenu": "Menu openen of sluiten"
+  },
+  "cta": {
+    "reserve": "Reserveren",
+    "reserveShort": "Reserveren",
+    "reserveTable": "Tafel reserveren",
+    "viewMenu": "Bekijk de menukaart",
+    "viewFullMenu": "Bekijk de volledige menukaart",
+    "call": "Bellen",
+    "directions": "Routebeschrijving",
+    "directionsShort": "Route",
+    "openMaps": "Openen in Google Maps",
+    "viewReviews": "Bekijk reviews op Google",
+    "viewTripadvisor": "Bekijk op Tripadvisor",
+    "whatsapp": "WhatsApp",
+    "story": "Ons verhaal",
+    "gallery": "Bekijk de galerij",
+    "contact": "Hoe u ons vindt"
+  },
+  "a11y": {
+    "skip": "Ga naar de inhoud",
+    "close": "Sluiten",
+    "newWindow": "opent in een nieuw venster"
+  },
+  "langSuggest": { "message": "Deze pagina is ook beschikbaar in het Nederlands" },
+  "mobileBar": { "label": "Snelle acties" },
+  "whatsapp": {
+    "defaultMessage": "Hallo, ik wil graag een tafel reserveren bij La Rusticana.",
+    "formIntro": "Hallo, ik wil graag een tafel reserveren bij La Rusticana:"
+  },
+  "seo": {
+    "ogAlt": "Tuinterras van Restaurant La Rusticana in Atamaría, La Manga Club",
+    "schemaDescription": "Familierestaurant in Atamaría, naast La Manga Club (Cartagena, Murcia), geopend sinds 1986. Mediterrane en internationale keuken, terrassen, speeltuin en eigen parkeerplaats.",
+    "home": {
+      "title": "Restaurant La Rusticana · Atamaría, La Manga Club (Cartagena)",
+      "description": "Familierestaurant sinds 1986 in Atamaría, naast La Manga Club. Mediterrane en internationale keuken, terrassen, open haard, speeltuin. Reserveer uw tafel."
+    },
+    "menu": {
+      "title": "Menukaart · Restaurant La Rusticana, Atamaría (La Manga Club)",
+      "description": "Menukaart van La Rusticana: tapas, voorgerechten, salades, vlees, vis, pasta, paella's en pizza's. Mediterraanse keuken in Atamaría, bij La Manga Club."
+    },
+    "about": {
+      "title": "Ons verhaal sinds 1986 · Restaurant La Rusticana, Atamaría",
+      "description": "La Rusticana opende in 1986 in Atamaría door Jens en Reinhilde Dittler. Nu zet dochter Nicole het huis voort: mediterrane keuken, terrassen, familiesfeer."
+    },
+    "gallery": {
+      "title": "Galerij · Restaurant La Rusticana, Atamaría (La Manga Club)",
+      "description": "Terrassen, zalen, gerechten en sfeer van La Rusticana, het familierestaurant in Atamaría naast La Manga Club."
+    },
+    "reservations": {
+      "title": "Tafel reserveren · Restaurant La Rusticana, Atamaría",
+      "description": "Reserveer een tafel bij La Rusticana (Atamaría, La Manga Club): bel +34 626 91 90 20, stuur een WhatsApp-bericht of gebruik het aanvraagformulier."
+    },
+    "contact": {
+      "title": "Contact en route · Restaurant La Rusticana, Atamaría",
+      "description": "Paraje Atamaría 76, 30385 Cartagena. Telefoon, WhatsApp, e-mail, openingstijden en kaart om La Rusticana te vinden, naast La Manga Club."
+    },
+    "legal": {
+      "title": "Juridische informatie · Restaurant La Rusticana",
+      "description": "Juridische informatie over de website van Restaurant La Rusticana, Atamaría, Cartagena."
+    },
+    "privacy": {
+      "title": "Privacybeleid · Restaurant La Rusticana",
+      "description": "Hoe Restaurant La Rusticana omgaat met de persoonsgegevens van reserveringen en contact."
+    },
+    "cookies": {
+      "title": "Cookiebeleid · Restaurant La Rusticana",
+      "description": "Welke opslag en cookies de website van Restaurant La Rusticana gebruikt en hoe u ze beheert."
+    },
+    "notFound": {
+      "title": "Pagina niet gevonden · Restaurant La Rusticana",
+      "description": "De pagina die u zoekt bestaat niet of heeft een ander adres gekregen."
+    }
+  },
+  "footer": {
+    "since": "Familierestaurant in Atamaría, naast La Manga Club. Geopend sinds {year}.",
+    "visit": "Bezoek ons",
+    "explore": "Ontdekken",
+    "rights": "Alle rechten voorbehouden."
+  },
+  "hours": {
+    "title": "Openingstijden",
+    "closed": "Gesloten",
+    "notice": "Indicatieve openingstijden: deze kunnen per seizoen of bij evenementen variëren. Bevestig telefonisch of via WhatsApp voordat u komt."
+  },
+  "consent": {
+    "title": "Uw privacy",
+    "text": "Wij gebruiken alleen strikt noodzakelijke technische opslag (taal en deze keuze). Met uw toestemming kunnen wij inhoud van derden laden, zoals de Google-kaart. U kunt dit op elk moment wijzigen.",
+    "policy": "Cookiebeleid",
+    "manage": "Cookievoorkeuren",
+    "necessary": "Noodzakelijk",
+    "necessaryDesc": "Onthouden uw taal en uw cookiekeuze. Altijd actief.",
+    "analytics": "Analytisch",
+    "analyticsDesc": "Anonieme gebruiksstatistieken met Google Analytics 4.",
+    "maps": "Google-kaart",
+    "mapsDesc": "Toont de interactieve kaart; Google kan cookies plaatsen.",
+    "save": "Voorkeuren opslaan",
+    "acceptAll": "Alles accepteren",
+    "rejectAll": "Optionele weigeren",
+    "customize": "Instellen"
+  },
+  "hero": {
+    "srPrefix": "Restaurant",
+    "lead": "Sinds 1986 in het hart van Atamaría, naast La Manga Club. Mediterrane en internationale keuken, terrassen en gezellig natafelen met familie en vrienden.",
+    "place": "Atamaría · La Manga Club · Cartagena"
+  },
+  "intro": {
+    "title": "Een familiehuis in Atamaría, geopend sinds 1986",
+    "p1": "In 1986 openden Jens en Reinhilde Dittler La Rusticana met het idee om mediterrane keuken te bieden in Atamaría. Nu leidt hun dochter Nicole het huis.",
+    "p2": "Terrassen bij mooi weer, zalen met open haard als het koeler wordt, speeltuin en eigen parkeerplaats: een plek om te lunchen, te dineren en even te blijven zitten.",
+    "since": "Sinds 1986",
+    "family": "Familiebedrijf",
+    "place": "Atamaría"
+  },
+  "dishes": {
+    "title": "Van de kaart",
+    "lead": "Enkele gerechten die steeds terugkomen op tafel en in de reviews. De volledige kaart, met alle prijzen, vindt u hiernaast.",
+    "priceNote": "Prijs volgens de menukaart die het restaurant heeft gepubliceerd."
+  },
+  "ambience": {
+    "title": "Een plek om het hele jaar van te genieten",
+    "lead": "De eetzaal verandert met het weer: buiten als het kan, bij de open haard als het nodig is.",
+    "items": [
+      { "title": "Terrassen", "text": "Ruime terrassen in de buitenlucht voor middagen en avonden met mooi weer.", "icon": "sun" },
+      { "title": "Zalen met open haard", "text": "Als het koeler wordt: warme en gezellige eetzalen binnen.", "icon": "flame" },
+      { "title": "Voor de kinderen", "text": "Buitenspeeltuin en binnenspeelhoek voor regenachtige dagen. Kindermenu en kinderstoelen.", "icon": "trees" },
+      { "title": "Eigen parkeerplaats", "text": "Gratis parkeren bij het restaurant zelf.", "icon": "car" },
+      { "title": "Muziek en bijzondere avonden", "text": "Gedurende het jaar organiseren zij live muziek, themafeesten en bijzondere avonden. Volg ons op social media voor de data.", "icon": "music" },
+      { "title": "Feesten en groepen", "text": "Verjaardagen, jubilea, communies, bruiloften, bedrijfsdiners en familiebijeenkomsten, met groepsmenu's en voorstellen op maat.", "icon": "utensils" }
+    ],
+    "access": "Toegang, parkeerplaats en toilet aangepast voor rolstoelen."
+  },
+  "reviews": {
+    "title": "Wat onze gasten zeggen",
+    "summary": "{googleRating} van 5 op Google ({googleCount} reviews) en {taRating} van 5 op Tripadvisor ({taCount} beoordelingen). Gegevens geraadpleegd in september 2026.",
+    "themesTitle": "Wat het vaakst terugkomt in de reviews",
+    "themes": [
+      "Persoonlijke en familiaire bediening van het team",
+      "Terras en gezellige sfeer",
+      "Kroketten en paella's",
+      "Live muziek",
+      "Speeltuin voor de kinderen",
+      "Gemakkelijk en gratis parkeren"
+    ],
+    "sources": "Eigen samenvatting op basis van openbare reviews. Wij geven geen opmerkingen letterlijk weer: u kunt ze volledig lezen op elk platform."
+  },
+  "location": {
+    "title": "Routebeschrijving",
+    "lead": "Wij bevinden ons in Paraje Atamaría, naast La Manga Club, in de gemeente Cartagena (Los Belones), in de regio Murcia. Er is eigen en gratis parkeergelegenheid.",
+    "mapTitle": "Kaart met de locatie van La Rusticana",
+    "loadMap": "Interactieve kaart laden",
+    "mapConsent": "Bij het laden van de kaart kan Google cookies op uw apparaat plaatsen.",
+    "coordinates": "Coördinaten"
+  },
+  "band": {
+    "title": "Reserveer uw tafel",
+    "text": "Bel ons, stuur een WhatsApp-bericht of verstuur een aanvraag. Reserveren wordt aanbevolen. De reservering is bevestigd zodra het restaurant u antwoordt."
+  },
+  "menuPage": {
+    "title": "Menukaart",
+    "intro": "Mediterrane keuken met internationale accenten: tapas om te delen, salades, vlees, vis, pasta, paella's en pizza's.",
+    "categoriesLabel": "Categorieën van de menukaart",
+    "filtersLabel": "Filters",
+    "filterAll": "Hele kaart",
+    "allergenTitle": "Allergieën en intoleranties",
+    "allergenText": "Deze digitale kaart bevat geen informatie over allergenen. Heeft u een allergie of intolerantie, meld dit dan aan het team voordat u bestelt.",
+    "updated": "Kaart overgenomen in september 2026 van de kaart die het restaurant heeft gepubliceerd. Prijzen en gerechten kunnen wijzigen.",
+    "pricesHint": "Prijzen in euro.",
+    "perUnit": "per stuk",
+    "askStaff": "Vraag ernaar",
+    "pending": "Prijs nog te bevestigen door het restaurant",
+    "tags": { "vegetarian": "Vegetarisch", "vegan": "Veganistisch", "glutenFree": "Glutenvrij" },
+    "noResults": "Er zijn geen gerechten in deze categorie.",
+    "downloadNote": "Liever op papier? Vraag ernaar in het restaurant."
+  },
+  "aboutPage": {
+    "title": "Veertig jaar, hetzelfde huis",
+    "lead": "La Rusticana is niet ontstaan voor toeristen: al veertig jaar staat het in Atamaría, met dezelfde familie erachter.",
+    "s1": {
+      "title": "1986: de opening",
+      "text": "In 1986 opende een Duits echtpaar, Jens en Reinhilde Dittler, La Rusticana in de sierra van Atamaría, dicht bij Los Belones. Zij wilden mediterrane keuken bieden in de streek, met kwaliteitsproducten en internationale accenten."
+    },
+    "s2": {
+      "title": "Nicole neemt het stuur over",
+      "text": "Hun dochter Nicole nam het bedrijf over en leidt het huis nu. Het familiekarakter is voelbaar: een restaurant waar veel gasten terugkomen en waar de bediening persoonlijk blijft."
+    },
+    "s3": {
+      "title": "Atamaría en La Manga Club",
+      "text": "Het restaurant ligt in Paraje Atamaría, naast La Manga Club. Aan de tafels mengen zich inwoners van Cartagena en omgeving, bewoners en bezoekers van het resort uit verschillende landen, die al tientallen jaren in hetzelfde huis worden ontvangen."
+    },
+    "s4": {
+      "title": "De keuken",
+      "text": "Mediterrane keuken met internationale invloeden: huisgemaakte tapas en kroketten, rijstgerechten en paella's, vlees, vis en pasta, naast gerechten uit de Midden-Europese traditie zoals schnitzel of Stroganoff-ossenhaas."
+    },
+    "timelineTitle": "In een paar data",
+    "timeline": [
+      { "year": "1986", "text": "Jens en Reinhilde Dittler openen La Rusticana in Atamaría." },
+      { "year": "2023", "text": "Het programma El Rompeolas van ORM wijdt een aflevering aan La Rusticana binnen de “Rutas gastronómicas por la Trimilenaria”." },
+      { "year": "2026", "text": "Veertig jaar later is het huis nog steeds open en in handen van de familie." }
+    ],
+    "press": "Bekijk de aflevering op ORM",
+    "cta": "Kom kennismaken"
+  },
+  "galleryPage": {
+    "title": "Galerij",
+    "lead": "Terrassen, zalen, gerechten en hoekjes van het huis.",
+    "filterLabel": "Filteren op categorie",
+    "all": "Alles",
+    "categories": {
+      "restaurant": "Restaurant",
+      "terrace": "Terras",
+      "food": "Gastronomie",
+      "interior": "Interieur",
+      "events": "Evenementen",
+      "family": "Familie",
+      "surroundings": "Atamaría en omgeving"
+    },
+    "pendingTitle": "Foto volgt nog",
+    "pendingHint": "Wordt vervangen door een echte foto van het restaurant.",
+    "lightbox": { "close": "Afbeelding sluiten", "prev": "Vorige afbeelding", "next": "Volgende afbeelding", "label": "Afbeeldingsviewer", "counter": "Afbeelding {n} van {total}" },
+    "note": "Foto's van het restaurant. De vakken die als in afwachting zijn gemarkeerd, wachten op echte foto's die het restaurant zal aanleveren."
+  },
+  "reservationsPage": {
+    "title": "Tafel reserveren",
+    "lead": "Kies hoe u het liefst reserveert. Reserveren wordt aanbevolen; de tafel is bevestigd zodra het restaurant u antwoordt.",
+    "callTitle": "Per telefoon",
+    "callText": "De snelste manier: bel ons tijdens de openingstijden.",
+    "waTitle": "Via WhatsApp",
+    "waText": "Wij openen de chat voor u met een kant-en-klaar bericht.",
+    "formTitle": "Reserveringsaanvraag",
+    "formLead": "Vul de gegevens in en verstuur de aanvraag. Dit is geen automatische bevestiging.",
+    "fields": {
+      "name": "Naam",
+      "phone": "Telefoon",
+      "email": "E-mailadres (optioneel)",
+      "date": "Datum",
+      "time": "Tijd",
+      "guests": "Aantal personen",
+      "area": "Gewenste zone",
+      "notes": "Opmerkingen",
+      "allergies": "Allergieën of intoleranties",
+      "consent": "Ik heb het privacybeleid gelezen en ga ermee akkoord dat mijn gegevens worden verwerkt om deze reservering te behandelen."
+    },
+    "areas": { "none": "Geen voorkeur", "terrace": "Terras", "indoor": "Binnen" },
+    "guestsMore": "Meer dan {n} personen: bel ons",
+    "placeholders": { "notes": "Verjaardag, kinderstoel, kinderwagen…", "allergies": "Vermeld allergieën of intoleranties" },
+    "submitWhatsapp": "Aanvraag versturen via WhatsApp",
+    "submitEmail": "Versturen per e-mail",
+    "submit": "Aanvraag versturen",
+    "sending": "Bezig met verzenden…",
+    "sentTitle": "Aanvraag verzonden",
+    "sentText": "Wij hebben uw aanvraag ontvangen. De reservering is bevestigd zodra het restaurant u antwoordt.",
+    "opened": "Wij hebben WhatsApp geopend met uw aanvraag. Druk daar op verzenden zodat deze het restaurant bereikt.",
+    "openedEmail": "Wij hebben uw e-mailprogramma geopend met de aanvraag klaar. Verstuur deze vanuit daar zodat deze het restaurant bereikt.",
+    "errorGeneric": "Wij hebben de aanvraag niet kunnen verzenden. Probeer het opnieuw of bel ons.",
+    "errors": {
+      "required": "Dit veld is verplicht.",
+      "phone": "Vul een geldig telefoonnummer in, met landnummer als het uit een ander land komt.",
+      "email": "Vul een geldig e-mailadres in.",
+      "date": "Kies een datum vanaf vandaag.",
+      "guests": "Geef tussen 1 en {n} personen op.",
+      "consent": "U moet het privacybeleid accepteren."
+    },
+    "closedDay": "Op die dag is het restaurant meestal gesloten. U kunt de aanvraag toch versturen, dan antwoorden wij u.",
+    "summaryTitle": "Samenvatting van uw aanvraag",
+    "wait": "Reactietijd: afhankelijk van de drukte; bel voor dezelfde dag telefonisch."
+  },
+  "contactPage": {
+    "title": "Contact",
+    "lead": "Alles wat u nodig hebt om ons te vinden en te spreken.",
+    "addressTitle": "Adres",
+    "phoneTitle": "Telefoon en WhatsApp",
+    "emailTitle": "E-mail",
+    "hoursTitle": "Openingstijden",
+    "socialTitle": "Social media",
+    "mapTitle": "Kaart",
+    "areaNote": "Atamaría · La Manga Club · Cartagena · Regio Murcia"
+  },
+  "notFound": {
+    "title": "Wij kunnen deze pagina niet vinden",
+    "text": "Misschien is het adres gewijzigd of verkeerd getypt.",
+    "home": "Naar de startpagina",
+    "menu": "Bekijk de menukaart"
+  },
+  "legalNotice": {
+    "pendingBanner": "Deze tekst moet nog worden aangevuld door de houder van het restaurant: de geverifieerde bedrijfsnaam en het NIF/CIF (fiscaal nummer) ontbreken. Fiscale gegevens worden niet gepubliceerd zonder bevestiging.",
+    "updated": "Laatst bijgewerkt: september 2026.",
+    "holderTitle": "1. Identificatiegegevens",
+    "holder": "Ter naleving van artikel 10 van Wet 34/2002 inzake diensten van de informatiemaatschappij en elektronische handel (LSSI-CE) wordt medegedeeld dat deze website wordt geëxploiteerd door:",
+    "labels": { "trade": "Handelsnaam", "holder": "Houder", "vat": "NIF/CIF (fiscaal nummer)", "address": "Adres", "email": "E-mail", "phone": "Telefoon", "pendingValue": "Nog te bevestigen door de houder" },
+    "sections": [
+      { "title": "2. Doel en gebruiksvoorwaarden", "text": "Deze website informeert over het restaurant (menukaart, openingstijden, locatie en reserveringen). Het gebruik ervan is gratis en verleent de hoedanigheid van gebruiker, die zich ertoe verbindt de website te gebruiken conform de wet, de goede trouw en de openbare orde." },
+      { "title": "3. Intellectuele en industriële eigendom", "text": "De teksten, het ontwerp, de code en de foto's van de website behoren toe aan de houder of worden met toestemming gebruikt. Reproductie of verspreiding zonder toestemming is verboden. De naam “La Rusticana” en de overige onderscheidende tekens behoren toe aan hun houders." },
+      { "title": "4. Indicatieve informatie", "text": "Menukaart, prijzen, openingstijden en evenementen worden te goeder trouw gepubliceerd en kunnen zonder voorafgaande kennisgeving wijzigen. Bevestig de gegevens telefonisch of via WhatsApp voordat u komt, vooral met een groep of bij allergieën." },
+      { "title": "5. Links naar derden", "text": "De website verwijst naar diensten van derden (Google Maps, Instagram, Facebook, Tripadvisor, WhatsApp). De houder is niet verantwoordelijk voor hun inhoud of hun privacybeleid." },
+      { "title": "6. Toepasselijk recht en bevoegde rechter", "text": "Deze juridische informatie wordt beheerst door het Spaanse recht. Voor geschillen met consumenten zijn de rechtbanken van hun woonplaats bevoegd, overeenkomstig de toepasselijke regelgeving." }
+    ]
+  },
+  "privacyPolicy": {
+    "updated": "Laatst bijgewerkt: september 2026.",
+    "intro": "Dit beleid legt uit hoe de persoonsgegevens worden verwerkt die u ons verstrekt bij het reserveren of contact opnemen, overeenkomstig Verordening (EU) 2016/679 (AVG, in het Spaans RGPD) en Organieke Wet 3/2018 (LOPDGDD).",
+    "sections": [
+      { "title": "1. Verwerkingsverantwoordelijke", "text": "Restaurant La Rusticana, Paraje Atamaría 76, 30385 Cartagena (Murcia). E-mail: larusticanarestaurant@outlook.es · Telefoon: +34 626 91 90 20. Bedrijfsnaam en NIF/CIF: nog te bevestigen door de houder." },
+      { "title": "2. Welke gegevens wij verwerken en waarvoor", "text": "Naam, telefoon, e-mail (optioneel), datum, tijd, aantal gasten, gewenste zone, opmerkingen en allergieën die u opgeeft, uitsluitend om uw reserveringsaanvraag te behandelen en u te antwoorden. Als u ons telefonisch, via WhatsApp of per e-mail contacteert, verwerken wij de gegevens die u ons verstrekt om uw vraag te beantwoorden." },
+      { "title": "3. Rechtsgrond", "text": "Uw toestemming (art. 6.1.a AVG) bij het verzenden van het formulier en de uitvoering van precontractuele maatregelen op uw verzoek (art. 6.1.b). Als u allergieën of intoleranties vermeldt, kunnen deze gegevens gezondheidsgegevens zijn; wij verwerken ze uitsluitend om de service aan te passen, met uw uitdrukkelijke toestemming bij het verzenden ervan." },
+      { "title": "4. Hoe uw gegevens reizen", "text": "Deze website slaat de aanvragen niet op een eigen server op. Bij het verzenden van het formulier wordt WhatsApp of uw e-mailprogramma geopend met het klaargezette bericht, of wordt de aanvraag —als het restaurant een reserveringssysteem activeert— naar dat systeem verzonden. Bij WhatsApp is Meta Platforms Ireland Ltd. betrokken en bij e-mail de aanbieder van het restaurant (Microsoft Outlook)." },
+      { "title": "5. Bewaartermijn", "text": "Wij bewaren de gegevens zolang nodig is om de reservering te behandelen en daarna gedurende de wettelijke termijnen voor mogelijke aansprakelijkheden. Er worden geen profielen opgesteld en er worden geen geautomatiseerde beslissingen genomen." },
+      { "title": "6. Ontvangers", "text": "Wij verstrekken uw gegevens niet aan derden, behalve bij wettelijke verplichting. De genoemde aanbieders treden op als verwerkers of als eigen verantwoordelijken voor hun diensten, volgens hun voorwaarden. Als u de Google-kaart laadt, ontvangt Google technische gegevens van uw browser." },
+      { "title": "7. Uw rechten", "text": "U kunt de rechten van inzage, rectificatie, wissing, bezwaar, beperking en overdraagbaarheid uitoefenen door te schrijven naar larusticanarestaurant@outlook.es, zo nodig met een kopie van uw identiteitsbewijs. Als u van mening bent dat deze rechten niet zijn gerespecteerd, kunt u een klacht indienen bij de Spaanse gegevensbeschermingsautoriteit, Agencia Española de Protección de Datos (AEPD, www.aepd.es)." },
+      { "title": "8. Minderjarigen", "text": "Reserveringen moeten worden gemaakt door personen van 14 jaar of ouder; voor jongere personen komt de toestemming toe aan hun ouders of voogden." }
+    ]
+  },
+  "cookiePolicy": {
+    "updated": "Laatst bijgewerkt: september 2026.",
+    "intro": "Deze website gebruikt de opslag van de browser (localStorage) en, alleen met uw toestemming, cookies van derden. Wij laden niets optioneels voordat u het accepteert.",
+    "tableTitle": "Wat wij gebruiken",
+    "headers": { "name": "Naam / dienst", "purpose": "Doel", "type": "Type", "duration": "Duur" },
+    "rows": [
+      { "name": "rusticana-lang", "purpose": "De taal onthouden die u hebt gekozen.", "type": "Technisch (eigen)", "duration": "Tot u het verwijdert" },
+      { "name": "rusticana-consent", "purpose": "Uw cookiekeuze onthouden.", "type": "Technisch (eigen)", "duration": "Tot u het verwijdert" },
+      { "name": "Google Maps (ingesloten kaart)", "purpose": "De interactieve kaart tonen. Alleen als u accepteert of op “Kaart laden” drukt.", "type": "Derden (Google)", "duration": "Volgens Google" },
+      { "name": "Google Analytics 4", "purpose": "Anonieme gebruiksstatistieken. Alleen als de website dit heeft geactiveerd en u het accepteert.", "type": "Analytisch (Google)", "duration": "Tot 2 jaar" }
+    ],
+    "manageTitle": "Hoe u uw keuze wijzigt",
+    "manageText": "Klik onderaan de pagina op “Cookievoorkeuren” om uw opties op elk moment te wijzigen. U kunt ook de sitegegevens via uw browser verwijderen.",
+    "manageButton": "Voorkeuren openen",
+    "moreTitle": "Meer informatie",
+    "moreText": "Raadpleeg het privacybeleid om te weten hoe uw persoonsgegevens worden verwerkt."
+  },
+  "photos": {
+    "terraceEvening": "Terras van La Rusticana bij het vallen van de avond, met parasols, hoge tonnentafels en brandende lantaarns",
+    "terraceDay": "Tuinterras van La Rusticana met witte parasols, palmbomen en gazon",
+    "diningRoom": "Binnenzaal van La Rusticana met houten balken, terracottavloer en gedekte tafels",
+    "playground": "Buitenspeeltuin van La Rusticana met gele glijbaan omringd door groen",
+    "dishSquid": "Gerecht van inktvis met gamba's, groene saus en citroen",
+    "dishPaella": "Paella geserveerd in de paellapan met citroen",
+    "dishSalad": "Tropische salade met knapperige kip en romige saus",
+    "dishScallops": "Zamburiñas (kleine sint-jakobsschelpen) geserveerd in hun schelp met sinaasappel"
+  }
+}

@@ -1,0 +1,164 @@
+---
+/** Aviso legal, política de privacidad y política de cookies (mismo esqueleto tipográfico). */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { addressLines } from '../lib/contact.ts';
+import { t, tx, pathFor, type Locale, type PageKey } from '../i18n/index.ts';
+import { breadcrumbJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+  pageKey: 'legal' | 'privacy' | 'cookies';
+}
+const { locale, pageKey } = Astro.props;
+type Section = { title: string; text: string };
+const a = addressLines();
+const legalOk = restaurant.legal.status === 'confirmed' && restaurant.legal.legalName && restaurant.legal.vatId;
+const L = (k: string) => t(locale, `legalNotice.labels.${k}`);
+const pending = L('pendingValue');
+
+const sections = pageKey === 'legal' ? tx<Section[]>(locale, 'legalNotice.sections') : pageKey === 'privacy' ? tx<Section[]>(locale, 'privacyPolicy.sections') : [];
+const updated = t(locale, pageKey === 'legal' ? 'legalNotice.updated' : pageKey === 'privacy' ? 'privacyPolicy.updated' : 'cookiePolicy.updated');
+const cookieRows = pageKey === 'cookies' ? tx<{ name: string; purpose: string; type: string; duration: string }[]>(locale, 'cookiePolicy.rows') : [];
+const H = (k: string) => t(locale, `cookiePolicy.headers.${k}`);
+const pageTitle = t(locale, `nav.${pageKey}`);
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey={pageKey as PageKey}
+  title={t(locale, `seo.${pageKey}.title`)}
+  description={t(locale, `seo.${pageKey}.description`)}
+  noindex={false}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: t(locale, 'nav.home'), path: pathFor(locale, 'home') },
+      { name: pageTitle, path: pathFor(locale, pageKey) },
+    ]),
+  ]}
+>
+  <PageHeader locale={locale} pageKey={pageKey as PageKey} title={pageTitle} />
+
+  <article class="section--tight legal">
+    <div class="wrap wrap--narrow prose">
+      <p class="muted">{updated}</p>
+
+      {
+        pageKey === 'legal' && (
+          <>
+            {!legalOk && <p class="legal__warn" role="note">{t(locale, 'legalNotice.pendingBanner')}</p>}
+            <h2 class="h-3">{t(locale, 'legalNotice.holderTitle')}</h2>
+            <p>{t(locale, 'legalNotice.holder')}</p>
+            <dl class="legal__dl">
+              <div><dt>{L('trade')}</dt><dd>{restaurant.displayName}</dd></div>
+              <div><dt>{L('holder')}</dt><dd>{legalOk ? restaurant.legal.legalName : pending}</dd></div>
+              <div><dt>{L('vat')}</dt><dd>{legalOk ? restaurant.legal.vatId : pending}</dd></div>
+              <div><dt>{L('address')}</dt><dd>{a.oneLine}</dd></div>
+              <div><dt>{L('email')}</dt><dd><a href={`mailto:${restaurant.email.address}`}>{restaurant.email.address}</a></dd></div>
+              <div><dt>{L('phone')}</dt><dd><a href={`tel:${restaurant.phone.e164}`}>{restaurant.phone.display}</a></dd></div>
+            </dl>
+          </>
+        )
+      }
+      {pageKey === 'privacy' && <p class="lede">{t(locale, 'privacyPolicy.intro')}</p>}
+      {pageKey === 'cookies' && <p class="lede">{t(locale, 'cookiePolicy.intro')}</p>}
+
+      {
+        sections.map((s) => (
+          <section>
+            <h2 class="h-3">{s.title}</h2>
+            <p>{s.text}</p>
+          </section>
+        ))
+      }
+
+      {
+        pageKey === 'cookies' && (
+          <>
+            <h2 class="h-3">{t(locale, 'cookiePolicy.tableTitle')}</h2>
+            <div class="legal__table" role="region" aria-label={t(locale, 'cookiePolicy.tableTitle')} tabindex="0">
+              <table>
+                <thead>
+                  <tr><th scope="col">{H('name')}</th><th scope="col">{H('purpose')}</th><th scope="col">{H('type')}</th><th scope="col">{H('duration')}</th></tr>
+                </thead>
+                <tbody>
+                  {cookieRows.map((r) => <tr><th scope="row">{r.name}</th><td>{r.purpose}</td><td>{r.type}</td><td>{r.duration}</td></tr>)}
+                </tbody>
+              </table>
+            </div>
+            <h2 class="h-3">{t(locale, 'cookiePolicy.manageTitle')}</h2>
+            <p>{t(locale, 'cookiePolicy.manageText')}</p>
+            <p><button type="button" class="btn btn--olive" data-consent-open>{t(locale, 'cookiePolicy.manageButton')}</button></p>
+            <h2 class="h-3">{t(locale, 'cookiePolicy.moreTitle')}</h2>
+            <p>{t(locale, 'cookiePolicy.moreText')} <a href={pathFor(locale, 'privacy')}>{t(locale, 'nav.privacy')}</a></p>
+          </>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    display: grid;
+    gap: 1.1rem;
+    padding-bottom: 3rem;
+  }
+  .prose h2 {
+    margin-top: 1.5rem;
+  }
+  .prose p {
+    max-width: var(--measure);
+  }
+  .legal__warn {
+    padding: 1rem 1.25rem;
+    background: #f7e6d6;
+    border: 1.5px solid var(--terracotta);
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .legal__dl {
+    display: grid;
+    gap: 0;
+    margin: 0.5rem 0;
+  }
+  .legal__dl div {
+    display: grid;
+    gap: 0.15rem 1.5rem;
+    padding-block: 0.7rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .legal__dl dt {
+    font-weight: 700;
+    font-size: var(--fs-sm);
+  }
+  .legal__dl dd {
+    margin: 0;
+  }
+  @media (min-width: 40em) {
+    .legal__dl div {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+  .legal__table {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .legal__table table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 36rem;
+    font-size: var(--fs-sm);
+  }
+  .legal__table th,
+  .legal__table td {
+    text-align: left;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .legal__table thead th {
+    background: var(--straw-deep);
+  }
+</style>

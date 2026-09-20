@@ -1,0 +1,141 @@
+---
+import '../styles/global.css';
+import brygada from '@fontsource-variable/brygada-1918/files/brygada-1918-latin-wght-normal.woff2?url';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import { restaurant } from '../config/restaurant.config.ts';
+import { LOCALES, LOCALE_META, pathFor, t, type Locale, type PageKey } from '../i18n/index.ts';
+import { abs, hreflangLinks, OG_IMAGE_PATH } from '../lib/seo.ts';
+
+interface Props {
+  locale: Locale;
+  pageKey: PageKey;
+  title: string;
+  description: string;
+  /** Datos estructurados (objetos JSON-LD). */
+  jsonLd?: object[];
+  /** El hero de la home va bajo la cabecera. */
+  overlayHeader?: boolean;
+  noindex?: boolean;
+  ogImage?: string;
+  /** Dónde precargar imagen LCP */
+  preloadImage?: string;
+}
+const { locale, pageKey, title, description, jsonLd = [], overlayHeader = false, noindex = false, ogImage = OG_IMAGE_PATH, preloadImage } = Astro.props;
+
+const meta = LOCALE_META[locale];
+const canonical = abs(pathFor(locale, pageKey));
+const alternates = hreflangLinks(pageKey);
+const others = LOCALES.filter((l) => l !== locale);
+const suggestTargets = Object.fromEntries(LOCALES.map((l) => [l, pathFor(l, pageKey)]));
+const suggestMessages = Object.fromEntries(LOCALES.map((l) => [l, t(l, 'langSuggest.message')]));
+---
+
+<!doctype html>
+<html lang={meta.hreflang} data-locale={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <meta name="theme-color" content="#2c3a20" />
+    <meta name="color-scheme" content="light" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:site_name" content={restaurant.displayName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(ogImage)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t(locale, 'seo.ogAlt')} />
+    <meta property="og:locale" content={meta.ogLocale} />
+    {others.map((l) => <meta property="og:locale:alternate" content={LOCALE_META[l].ogLocale} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={abs(ogImage)} />
+    <meta name="twitter:image:alt" content={t(locale, 'seo.ogAlt')} />
+    {restaurant.analytics.gscVerification && <meta name="google-site-verification" content={restaurant.analytics.gscVerification} />}
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="preload" href={brygada} as="font" type="font/woff2" crossorigin />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">{t(locale, 'a11y.skip')}</a>
+    <Header locale={locale} pageKey={pageKey} overlay={overlayHeader} />
+
+    <div
+      class="lang-suggest on-olive"
+      data-lang-suggest
+      data-targets={JSON.stringify(suggestTargets)}
+      data-messages={JSON.stringify(suggestMessages)}
+      hidden
+    >
+      <p><a data-lang-suggest-link href="/"><span data-lang-suggest-text></span></a></p>
+      <button type="button" data-lang-suggest-close aria-label={t(locale, 'a11y.close')}>×</button>
+    </div>
+
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+
+    <Footer locale={locale} pageKey={pageKey} />
+    <MobileActionBar locale={locale} />
+    <CookieConsent locale={locale} />
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  main:focus {
+    outline: none;
+  }
+  .lang-suggest {
+    position: fixed;
+    top: var(--header-h);
+    inset-inline: 0;
+    z-index: 48;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem var(--gutter);
+    font-size: var(--fs-sm);
+  }
+  .lang-suggest[hidden] {
+    display: none;
+  }
+  .lang-suggest a {
+    color: var(--esparto);
+    font-weight: 700;
+  }
+  .lang-suggest button {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    background: none;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: inherit;
+  }
+</style>

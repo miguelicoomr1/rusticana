@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import AboutPreview from '../components/AboutPreview.astro';
+import FeaturedDishes from '../components/FeaturedDishes.astro';
+import Ambience from '../components/Ambience.astro';
+import GalleryStrip from '../components/GalleryStrip.astro';
+import Reviews from '../components/Reviews.astro';
+import LocationMap from '../components/LocationMap.astro';
+import ReservationCTA from '../components/ReservationCTA.astro';
+import { t, type Locale } from '../i18n/index.ts';
+import { restaurantJsonLd } from '../lib/seo.ts';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<BaseLayout
+  locale={locale}
+  pageKey="home"
+  title={t(locale, 'seo.home.title')}
+  description={t(locale, 'seo.home.description')}
+  jsonLd={[restaurantJsonLd(locale)]}
+  overlayHeader
+>
+  <Hero locale={locale} />
+  <AboutPreview locale={locale} />
+  <FeaturedDishes locale={locale} />
+  <Ambience locale={locale} />
+  <GalleryStrip locale={locale} />
+  <Reviews locale={locale} />
+  <div class="plait" aria-hidden="true"></div>
+  <LocationMap locale={locale} />
+  <ReservationCTA locale={locale} />
+</BaseLayout>

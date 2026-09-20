@@ -1,0 +1,45 @@
+---
+/** Marca: sello olivo con "R" y banda de pleita + nombre. */
+interface Props {
+  showText?: boolean;
+  class?: string;
+}
+const { showText = true, class: className } = Astro.props;
+---
+
+<span class:list={['logo', className]}>
+  <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+    <rect width="48" height="48" rx="3" fill="var(--olive-800)"></rect>
+    <path d="M17 12v20M17 12h8a5.5 5.5 0 0 1 0 11h-8M26 23l6.5 9" fill="none" stroke="var(--straw)" stroke-width="4.2" stroke-linecap="square"></path>
+    <path d="M0 38.5 6 42.5 12 38.5 18 42.5 24 38.5 30 42.5 36 38.5 42 42.5 48 38.5" fill="none" stroke="var(--esparto)" stroke-width="2.6"></path>
+    <path d="M0 43.5 6 47.5 12 43.5 18 47.5 24 43.5 30 47.5 36 43.5 42 47.5 48 43.5" fill="none" stroke="var(--esparto-deep)" stroke-width="2.6"></path>
+  </svg>
+  {
+    showText && (
+      <span class="logo__text">
+        <span class="logo__name">La Rusticana</span>
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.5rem, 0.4rem + 0.5vw, 0.7rem);
+  }
+  .logo__mark {
+    width: clamp(2.25rem, 2rem + 1vw, 2.5rem);
+    height: clamp(2.25rem, 2rem + 1vw, 2.5rem);
+    flex: none;
+  }
+  .logo__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 0.95rem + 1.1vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+</style>
