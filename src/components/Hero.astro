@@ -99,16 +99,26 @@ const { locale } = Astro.props;
   }
 
   .hero__panel {
+    --hero-pl: max(var(--gutter), calc((100vw - var(--page)) / 2 + var(--gutter)));
     position: relative;
-    width: min(100%, 46rem);
+    width: min(100%, calc(var(--hero-pl) + 41rem));
     padding-top: 0;
+  }
+  /* escritorio: cartel translúcido, la terraza se ve a través */
+  @media (min-width: 64em) {
+    .hero .hero__panel {
+      background: color-mix(in srgb, var(--olive-900) 52%, transparent);
+      -webkit-backdrop-filter: blur(3px) saturate(1.1);
+      backdrop-filter: blur(3px) saturate(1.1);
+      text-shadow: 0 1px 14px rgb(0 0 0 / 0.45);
+    }
   }
   .hero__plait {
     width: 100%;
   }
   .hero__body {
     padding: clamp(1.5rem, 1rem + 2.5vw, 3rem) var(--gutter) calc(clamp(1.75rem, 1rem + 2.5vw, 3rem) + 1.5rem);
-    padding-left: max(var(--gutter), calc((100vw - var(--page)) / 2 + var(--gutter)));
+    padding-left: var(--hero-pl);
     display: grid;
     gap: 1.1rem;
   }
